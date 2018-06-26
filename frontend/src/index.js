@@ -8,11 +8,11 @@ import { BrowserRouter } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-	<BrowserRouter basename='/readable'>
-		<Provider store={store}>
+	<Provider store={store}>
+		<BrowserRouter basename='/readable'>
 			<App />
-		</Provider>
-	</BrowserRouter>
+		</BrowserRouter>
+	</Provider>
 	, document.getElementById('root')
 );
 

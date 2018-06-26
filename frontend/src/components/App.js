@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
 import '../App.css';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { fetchPosts } from './../store/actions';
+import { PostsList } from './PostsList'
+
+
 
 class App extends Component {
 	componentDidMount = () => {
@@ -11,20 +13,13 @@ class App extends Component {
 	};
 	
 
+
 	render() {
 		return (
 			<div className="App">
-				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
-					<h1 className="App-title">Welcome to React</h1>
-				</header>
-				<Route path="/posts" render={() => (
-					<ul>
-					{this.props.posts && 
-						this.props.posts.map(post => <li key={post.id}>{post.title}</li>)}
-				</ul>
+				<Route path="/" exact render={() => (
+					<PostsList posts={this.props.posts}/>
 				)} />
-
 			</div>
 		);
 	}
