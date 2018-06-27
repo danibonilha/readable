@@ -21,14 +21,7 @@
         "babel"
     ],
     "rules": {
-        "indent": [
-            "error",
-            2,
-            {
-                "SwitchCase": 1
-            },
-            "tab"
-        ],
+        "indent": [ "error","tab", { "SwitchCase": 1 } ],
         "linebreak-style": [
             "error",
             "unix"

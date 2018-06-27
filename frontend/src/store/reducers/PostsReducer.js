@@ -8,14 +8,14 @@ export default (state = { posts: {} }, action) => {
 		case UPDATE_VOTESCORE:
 			return {
 				...state,
-					posts: {
-						...state.posts,		
+				posts: {
+					...state.posts,		
 					[payload.id]: {
 						...state.posts[payload.id],
 						voteScore: payload.voteScore
 					}
 				}
-			}
+			};
 		default:
 			return state;
 	}
