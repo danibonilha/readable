@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { fetchPosts } from './../store/actions';
-import PostsList  from './PostsList'
+import PostsList  from './PostsList';
 
 class App extends Component {
 	componentDidMount = () => {
-		this.props.fetchPosts()
+		this.props.fetchPosts();
 	};
 	
 	render() {
