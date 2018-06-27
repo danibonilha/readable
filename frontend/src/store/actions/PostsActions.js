@@ -1,4 +1,4 @@
-import { STORE_POSTS, UPDATE_VOTESCORE } from '../actions/types';
+import { STORE_POSTS, UPDATE_VOTESCORE, DELETE_POST } from '../actions/types';
 import { PostsService } from './../../services';
 import { normalize, schema } from 'normalizr';
 
@@ -12,10 +12,13 @@ const storePosts = (posts) => ({
 
 const fetchPosts = () => dispatch => (
 	PostsService.getAll()
-		.then((posts) => {
-			const normalizedPosts = normalize(posts, postsListSchema);
+		.then((responsePosts) => {
+			let posts = { posts: responsePosts };
+			if (responsePosts.length > 0) {
+				posts = normalize(responsePosts, postsListSchema).entities;
+			}
 			dispatch(
-				storePosts(normalizedPosts.entities)
+				storePosts(posts)
 			);
 		})
 );
@@ -31,4 +34,16 @@ const updatePostVote = (id, voteType) => dispatch => (
 			voteScoreUpdate(post)
 		))
 );
-export { fetchPosts, updatePostVote };
+const removeFromState = (id) => ({
+	type: DELETE_POST,
+	payload: id
+});
+
+const deletePost = (id) => dispatch => (
+	PostsService.remove(id)
+		.then((post) => dispatch(
+			removeFromState(post.id)
+		))
+);
+
+export { fetchPosts, updatePostVote, deletePost };

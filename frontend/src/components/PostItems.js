@@ -66,8 +66,8 @@ const MenuListButton = ({ onClick }) => (
 			aria-label="Menu"
 			onClick={onClick}
 		>
-			<MenuIcon s
-				tyle={{ color: colors.darkPrimary }}
+			<MenuIcon 
+				style={{ color: colors.darkPrimary }}
 			/>
 		</IconButton>
 	</ListItemSecondaryAction>

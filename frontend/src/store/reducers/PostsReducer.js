@@ -1,4 +1,4 @@
-import { STORE_POSTS, UPDATE_VOTESCORE } from '../actions/types';
+import { STORE_POSTS, UPDATE_VOTESCORE, DELETE_POST } from '../actions/types';
 
 export default (state = { posts: {} }, action) => {
 	const { payload } = action;
@@ -16,6 +16,12 @@ export default (state = { posts: {} }, action) => {
 					}
 				}
 			};
+		case DELETE_POST: {
+			const { [payload]: deleted, ...updatedPosts } = state.posts;
+			return {
+				...state, posts: updatedPosts
+			};
+		}
 		default:
 			return state;
 	}
