@@ -9,7 +9,8 @@ const styles = {
 		display: 'flex',
 		flexDirection: 'row',
 		alignItems: 'center',
-		textDecoration: 'none'
+		textDecoration: 'none',
+		width: '100%'
 	}
 };
 
