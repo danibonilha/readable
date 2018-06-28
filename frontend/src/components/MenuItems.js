@@ -16,7 +16,7 @@ const styles = {
 		marginBottom: 8
 	},
 	editColor: {
-		color: colors.primary
+		color: colors.darkPrimary
 	},
 	deleteColor: {
 		color: colors.delete

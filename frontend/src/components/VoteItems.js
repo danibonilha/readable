@@ -7,7 +7,7 @@ const size = 40;
 const styles = {
 	arrow: {
 		fontSize: size,
-		color: colors.darkPrimary
+		color: colors.primary
 	},
 	icon: {
 		width: size,

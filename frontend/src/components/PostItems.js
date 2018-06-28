@@ -67,7 +67,7 @@ const MenuListButton = ({ onClick }) => (
 			onClick={onClick}
 		>
 			<MenuIcon 
-				style={{ color: colors.darkPrimary }}
+				style={{ color: colors.primary }}
 			/>
 		</IconButton>
 	</ListItemSecondaryAction>

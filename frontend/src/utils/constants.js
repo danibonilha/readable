@@ -1,10 +1,10 @@
 const constants = {
-	api: 'http://localhost:3001'
+	API: 'http://localhost:3001'
 };
 
 const colors = {
-	darkPrimary: '#00796B',
-	primary: '#009688',
+	darkPrimary: '#009688',
+	primary: '#536DFE',
 	delete: '#D32F2F',
 
 };
