@@ -16,7 +16,7 @@ const styles = {
 const PostPreview = ({ post, onMenuClick }) => (
 	<ListItem button divider >
 		<Link style={styles.link}
-			to={`/posts/${post.category}/${post.id}`}>
+			to={`/${post.category}/${post.id}`}>
 			<PostImage />
 			<PostInfo
 				title={post.title}
