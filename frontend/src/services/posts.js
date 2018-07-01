@@ -41,7 +41,7 @@ const updateVote = (id, voteType) => (
 		}
 	})
 );
-const update = (id, { title, body }) => {
+const update = (id, { title, body }) => (
 	request({
 		url: `posts/${id}/`,
 		method: 'PUT',
@@ -49,8 +49,8 @@ const update = (id, { title, body }) => {
 			title,
 			body
 		}
-	});
-};
+	})
+);
 
 const remove = (id) => (
 	request({

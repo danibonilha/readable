@@ -1,29 +1,31 @@
 import React from 'react';
 import { Button,	TextField, 	MenuItem  } from '@material-ui/core/';
 
-const TitleInput = ({ onChange }) => (
+const TitleInput = ({ value, onChange }) => (
 	<TextField
 		autoFocus
 		margin="dense"
 		id="title"
 		label="Title"
 		type="text"
+		value={value}
 		fullWidth
 		onChange={onChange}
 	/>
 );
 
-const AuthorInput = ({onChange}) => (
+const AuthorInput = ({ value, onChange }) => (
 	<TextField
 		margin="dense"
 		id="author"
 		label="Author"
 		type="text"
 		fullWidth
+		value={value}
 		onChange={onChange}
 	/>
 );
-const PostBodyInput = ({ onChange }) => (
+const PostBodyInput = ({ value, onChange }) => (
 	<TextField
 		margin="dense"
 		id="body"
@@ -32,6 +34,7 @@ const PostBodyInput = ({ onChange }) => (
 		multiline
 		rows="10"
 		fullWidth
+		value={value}
 		onChange={onChange}
 	/>
 );

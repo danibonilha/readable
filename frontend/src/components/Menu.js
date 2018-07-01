@@ -1,8 +1,9 @@
 
-import React from 'react';
+import React, {Component} from 'react';
 import { List, ListItem } from '@material-ui/core';
 import Collapse from '@material-ui/core/Collapse';
 import { EditItem, DeleteItem } from './MenuItems';
+import EditPost from './EditPost';
 
 const styles = {
 	container: {
@@ -14,15 +15,31 @@ const styles = {
 	}
 };
 
-const Menu = ({ open, edit, remove }) => (
-	<Collapse in={open} timeout="auto" unmountOnExit>
-		<List component="div">
-			<ListItem style={styles.container}>
-				<EditItem onClick={edit} />
-				<DeleteItem onClick={remove} />
-			</ListItem>
-		</List>
-	</Collapse>
-);
 
+class Menu extends Component {
+	state = {
+		open: false 
+	}
+
+	handleOpen = () => this.setState({ open: true })
+	handleClose = () => this.setState({ open: false })
+
+	render (){
+		const { open, remove, postToEdit }= this.props;
+		return (
+			<Collapse in={open} timeout="auto" unmountOnExit>
+				<List component="div">
+					<ListItem style={styles.container}>
+						<EditItem onClick={this.handleOpen} />
+						<DeleteItem onClick={remove} />
+					</ListItem>
+					<EditPost 
+						open={this.state.open} 
+						handleClose={this.handleClose}
+						post={postToEdit}
+					/>
+				</List>
+			</Collapse>
+		);}
+}
 export { Menu };

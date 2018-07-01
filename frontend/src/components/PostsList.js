@@ -18,14 +18,16 @@ class PostsList extends Component {
 	state = {
 		menuOpen: false
 	};
+
 	handleClick = () => {
 		this.setState(prevState => ({
 			menuOpen: !prevState.menuOpen
 		}));
 	};
-	onEditPost = () => {
+	handleClose = () => {
+		this.setState({ editOpen: false });
+	};
 
-	}
 	onDeletePost = (id) => {
 		this.props.deletePost(id);
 	}
@@ -39,8 +41,8 @@ class PostsList extends Component {
 							<PostPreview post={post} onMenuClick={this.handleClick} />
 							<Menu
 								open={this.state.menuOpen}
-								edit={this.onEditPost}
 								remove={(e) => this.onDeletePost(post.id, e)}
+								postToEdit={post}
 							/>
 						</div>
 					)) :

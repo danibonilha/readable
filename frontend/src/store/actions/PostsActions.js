@@ -41,19 +41,25 @@ const fetchPostsByCategory = (category) => dispatch => (
 		})
 );
 
+const newPostObject = (post) => ({
+	'posts': {
+		[post.id]: post
+	}
+});
+
 const createNewPost = (form) => dispatch => (
 	PostsService.create(form)
-		.then((post) => {
-			const newPost = {
-				'posts':{
-					[post.id]: post,
-				}};
-			dispatch(
-				storePosts(newPost)
-			);
-		})
+		.then((post) => dispatch(
+			storePosts(newPostObject(post))
+		))
 );
 
+const editPost = (id, infoToUpdate) => dispatch => (
+	PostsService.update(id, infoToUpdate)
+		.then((post) => dispatch(
+			storePosts(newPostObject(post))
+		))
+);
 
 const voteScoreUpdate = (post) => ({
 	type: UPDATE_VOTESCORE,
@@ -78,4 +84,12 @@ const deletePost = (id) => dispatch => (
 		))
 );
 
-export { fetchPosts, updatePostVote, deletePost, fetchPostsByCategory, createNewPost };
+
+export { 
+	fetchPosts, 
+	updatePostVote, 
+	deletePost,
+	fetchPostsByCategory,
+	createNewPost, 
+	editPost 
+};
