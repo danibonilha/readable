@@ -1,8 +1,8 @@
 import React from 'react';
 import { ListItemSecondaryAction, IconButton, ListItemIcon, ListItemText } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import { Comment } from '@material-ui/icons';
+import { Comment, Menu } from '@material-ui/icons';
 import { colors } from '../utils';
+import * as moment from 'moment';
 
 const styles = {
 	img: {
@@ -29,9 +29,15 @@ const styles = {
 		}
 	},
 	info: {
-		container: { 
-			marginLeft: 10 
+		container: {
+			marginLeft: 10
 		}
+	},
+	date: {
+		width: 150,
+		alignSelf: 'flex-start',
+		paddingTop: 13,
+		textAlign: 'center'
 	}
 };
 
@@ -66,7 +72,7 @@ const MenuListButton = ({ onClick }) => (
 			aria-label="Menu"
 			onClick={onClick}
 		>
-			<MenuIcon 
+			<Menu
 				style={{ color: colors.primary }}
 			/>
 		</IconButton>
@@ -78,10 +84,17 @@ const MenuListButton = ({ onClick }) => (
 const PostInfo = ({ title, author, commentCount }) => (
 	<div style={styles.info.container}>
 		<ListItemText primary={title} secondary={`by: ${author}`} />
+
 		<CommentCount number={commentCount} />
 	</div>
 );
 
+const DateInfo = ({ date }) => (
+	<ListItemText
+		style={styles.date}
+		secondary={moment(date).fromNow()}
+	/>
+);
 
-export { PostImage, CommentCount, MenuListButton, PostInfo };
+export { PostImage, CommentCount, MenuListButton, PostInfo, DateInfo };
 

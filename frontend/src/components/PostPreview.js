@@ -1,8 +1,7 @@
 import React from 'react';
 import { ListItem } from '@material-ui/core';
 import Link from 'react-router-dom/Link';
-import { PostImage, MenuListButton, PostInfo } from './PostItems';
-
+import { PostImage, MenuListButton, PostInfo, DateInfo } from './PostItems';
 
 const styles = {
 	link: {
@@ -26,6 +25,7 @@ const PostPreview = ({ post, onMenuClick }) => (
 			/>
 		</Link>
 		<MenuListButton onClick={onMenuClick} />
+		<DateInfo date={post.timestamp}/>
 	</ListItem>
 );
 
