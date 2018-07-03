@@ -5,6 +5,8 @@ import Vote from './Vote';
 import { PostPreview } from './PostPreview';
 import { Menu } from './Menu';
 import { deletePost } from '../store/actions';
+import OrderBy from './OrderBy';
+import { sortBy } from '../utils';
 
 const styles = {
 	container: {
@@ -33,29 +35,32 @@ class PostsList extends Component {
 	}
 	render() {
 		return (
-			<List>
-				{this.props.posts.length > 0 ?
-					this.props.posts.map(post => (
-						<div key={post.id} style={styles.container}>
-							<Vote itemId={post.id} voteScore={post.voteScore} />
-							<PostPreview post={post} onMenuClick={this.handleClick} />
-							<Menu
-								open={this.state.menuOpen}
-								remove={(e) => this.onDeletePost(post.id, e)}
-								postToEdit={post}
-							/>
-						</div>
-					)) :
-					<p>NOT FOUND</p>}
-			</List>
+			<div>
+				<OrderBy />
+				<List>
+					{this.props.posts.length > 0 ?
+						this.props.posts.map(post => (
+							<div key={post.id} style={styles.container}>
+								<Vote itemId={post.id} voteScore={post.voteScore} />
+								<PostPreview post={post} onMenuClick={this.handleClick} />
+								<Menu
+									open={this.state.menuOpen}
+									remove={(e) => this.onDeletePost(post.id, e)}
+									postToEdit={post}
+								/>
+							</div>
+						)) :
+						<p>No Posts Found!</p>}
+				</List>
+			</div>
 		);
 	}
 }
 
 const mapStateToProps = ({ PostsReducer }) => {
-	const { posts } = PostsReducer;
+	const { posts, sortType } = PostsReducer;
 	return {
-		posts: Object.values(posts)
+		posts: sortBy(sortType, Object.values(posts))
 	};
 };
 

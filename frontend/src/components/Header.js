@@ -3,12 +3,6 @@ import { colors } from '../utils';
 import AddPost from './AddPost';
 
 const styles = {
-	root: {
-		display: 'flex',
-		flexDirection: 'row',
-		flexGrow: 1,
-		color: 'red'
-	},
 	container: {
 		paddingTop: 20,
 		background: colors.darkPrimary,

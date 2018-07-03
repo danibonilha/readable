@@ -42,7 +42,7 @@ const PostBodyInput = ({ value, onChange }) => (
 const SelectCategory = ({ current, categories, onChange}) => (
 	<TextField
 		required
-		id="select-currency"
+		id="select-category"
 		select
 		label="Category"
 		value={current}

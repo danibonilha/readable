@@ -5,6 +5,7 @@ export const STORE_BY_CATEGORY = 'STORE_BY_CATEGORY';
 export const CREATE_POST = 'CREATE_POST';
 export const DELETE_POST = 'DELETE_POST';
 export const UPDATE_VOTESCORE = 'UPDATE_VOTESCORE';
+export const SET_ORDER_BY = 'SET_ORDER_BY';
 /**************************CATEGORY_TYPES****************************/
 export const STORE_CATEGORIES = 'STORE_CATEGORIES';
 export const SET_CURRENT_CATEGORY = 'SET_CURRENT_CATEGORY';

@@ -1,4 +1,4 @@
-import { STORE_POSTS, UPDATE_VOTESCORE, DELETE_POST, STORE_BY_CATEGORY } from '../actions/types';
+import { STORE_POSTS, UPDATE_VOTESCORE, DELETE_POST, STORE_BY_CATEGORY, SET_ORDER_BY } from '../actions/types';
 import { PostsService } from './../../services';
 import { normalize, schema } from 'normalizr';
 
@@ -84,6 +84,11 @@ const deletePost = (id) => dispatch => (
 		))
 );
 
+const setSortBy = (type) => ({
+	type: SET_ORDER_BY,
+	payload: type
+});
+
 
 export { 
 	fetchPosts, 
@@ -91,5 +96,6 @@ export {
 	deletePost,
 	fetchPostsByCategory,
 	createNewPost, 
-	editPost 
+	editPost,
+	setSortBy
 };

@@ -1,6 +1,10 @@
-import { STORE_POSTS, UPDATE_VOTESCORE, DELETE_POST, STORE_BY_CATEGORY } from '../actions/types';
+import { STORE_POSTS, UPDATE_VOTESCORE, DELETE_POST, STORE_BY_CATEGORY, SET_ORDER_BY } from '../actions/types';
 
-export default (state = { posts: {} }, action) => {
+const INITIAL_STATE = {
+	posts: {},
+	sortType: ''
+};
+export default (state = INITIAL_STATE, action) => {
 	const { payload } = action;
 	switch (action.type) {
 		case STORE_POSTS:
@@ -29,6 +33,9 @@ export default (state = { posts: {} }, action) => {
 			return {
 				...state, posts: updatedPosts
 			};
+		}
+		case SET_ORDER_BY: {
+			return { ...state, sortType: payload };
 		}
 		default:
 			return state;
