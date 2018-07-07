@@ -48,7 +48,8 @@ class Home extends Component {
 			<div>
 				<Header />
 				<CategoryTabs
-					onChange={this.handleChange} />
+					onChange={this.handleChange} 
+				/>
 				<PostsList />
 			</div>
 		);

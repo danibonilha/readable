@@ -61,6 +61,14 @@ const editPost = (id, infoToUpdate) => dispatch => (
 		))
 );
 
+const getPost = (id) => dispatch => (
+	PostsService.getById(id)
+		.then((post) => {
+			dispatch(
+				storePosts(newPostObject(post))
+			);})
+);
+
 const voteScoreUpdate = (post) => ({
 	type: UPDATE_VOTESCORE,
 	payload: post
@@ -97,5 +105,6 @@ export {
 	fetchPostsByCategory,
 	createNewPost, 
 	editPost,
-	setSortBy
+	setSortBy,
+	getPost
 };

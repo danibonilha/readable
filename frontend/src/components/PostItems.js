@@ -83,8 +83,10 @@ const MenuListButton = ({ onClick }) => (
 
 const PostInfo = ({ title, author, commentCount }) => (
 	<div style={styles.info.container}>
-		<ListItemText primary={title} secondary={`by: ${author}`} />
-
+		<ListItemText 
+			primary={title} 
+			secondary={`by: ${author}`} 
+		/>
 		<CommentCount number={commentCount} />
 	</div>
 );
