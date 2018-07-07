@@ -19,7 +19,6 @@ class Vote extends Component {
 	handleDownVote = () => {
 		this.props.updatePostVote(this.props.itemId, 'downVote');
 	}
-
 	render() {
 		return (
 			<div style={styles.container}>

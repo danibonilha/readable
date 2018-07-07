@@ -36,7 +36,6 @@ const EditItem = ({ onClick }) => (
 	</IconButton>
 );
 
-
 const DeleteItem = ({ onClick }) => (
 	<IconButton
 		aria-label="Delete"
@@ -48,6 +47,5 @@ const DeleteItem = ({ onClick }) => (
 		/>
 	</IconButton>
 );
-
 
 export { EditItem, DeleteItem };

@@ -79,8 +79,6 @@ const MenuListButton = ({ onClick }) => (
 	</ListItemSecondaryAction>
 );
 
-
-
 const PostInfo = ({ title, author, commentCount }) => (
 	<div style={styles.info.container}>
 		<ListItemText 
@@ -99,4 +97,3 @@ const DateInfo = ({ date }) => (
 );
 
 export { PostImage, CommentCount, MenuListButton, PostInfo, DateInfo };
-

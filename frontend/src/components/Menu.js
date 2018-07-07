@@ -15,7 +15,6 @@ const styles = {
 	}
 };
 
-
 class Menu extends Component {
 	state = {
 		open: false 

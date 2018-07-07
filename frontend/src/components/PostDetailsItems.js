@@ -50,5 +50,4 @@ const PostBody = ({ body }) => (
 	</Typography>
 );
 
-
 export { PostDetailsInfo };

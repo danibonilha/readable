@@ -4,7 +4,6 @@ import { DialogActions, DialogContent, DialogContentText, DialogTitle } from '@m
 import { TitleInput, AuthorInput, PostBodyInput, SelectCategory, PostButton, CancelButton } from './PostFormItems';
 
 class PostForm extends Component {
-
 	static defaultProps = {
 		title: '',
 		author: '',
