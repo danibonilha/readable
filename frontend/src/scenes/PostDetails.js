@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Paper} from '@material-ui/core';
-import Vote from './Vote';
-import { Menu } from './Menu';
+import Vote from '../components/Vote/Vote';
+import { Menu } from '../components/Menu/Menu';
 import { deletePost, getPost } from '../store/actions';
-import { Header } from './Header';
-import { CommentCount } from './PostItems';
-import { PostDetailsInfo } from './PostDetailsItems';
+import { Header } from '../components/Header/Header';
+import { CommentCount } from '../components/Posts/PostItems';
+import { PostDetailsInfo } from '../components/Posts/PostDetailsItems';
 
 const styles = {
 	mainContainer: {

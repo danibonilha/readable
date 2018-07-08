@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import Home from './Home';
-import Switch from 'react-router-dom/Switch';
-import PostDetails from './PostDetails';
+import { Route, Switch } from 'react-router-dom';
+import Home from './scenes/Home';
+import PostDetails from './scenes/PostDetails';
 
 class App extends Component {
 	render() {

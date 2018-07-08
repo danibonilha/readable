@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconButton } from '@material-ui/core';
 import { Delete, Edit } from '@material-ui/icons';
-import { colors } from '../utils';
+import { colors } from '../../utils';
 
 const iconSize = 25;
 const styles = {

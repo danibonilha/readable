@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updatePostVote } from '../store/actions';
+import { updatePostVote } from '../../store/actions';
 import { VoteDown, VoteUp, VoteScore } from './VoteItems';
 
 const styles = {

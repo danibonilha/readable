@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListItemSecondaryAction, IconButton, ListItemIcon, ListItemText } from '@material-ui/core';
 import { Comment, Menu } from '@material-ui/icons';
-import { colors } from '../utils';
+import { colors } from '../../utils';
 import * as moment from 'moment';
 
 const styles = {
@@ -44,7 +44,7 @@ const styles = {
 const PostImage = () => (
 	<img
 		alt='post' style={styles.img}
-		src={require('./assets/post-image.jpg')}
+		src={require('../assets/post-image.jpg')}
 	/>
 );
 

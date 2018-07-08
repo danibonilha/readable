@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dialog } from '@material-ui/core/';
 import PostForm from './PostForm';
-import { editPost } from '../store/actions';
+import { editPost } from '../../store/actions';
 
 class EditPost extends Component {
 

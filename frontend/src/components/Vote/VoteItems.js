@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowDropDown, ArrowDropUp } from '@material-ui/icons';
 import { IconButton, ListItemText } from '@material-ui/core';
-import { colors } from '../utils';
+import { colors } from '../../utils';
 
 const size = 40;
 const styles = {

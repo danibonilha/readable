@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { List } from '@material-ui/core';
-import Vote from './Vote';
+import Vote from '../Vote/Vote';
 import { PostPreview } from './PostPreview';
-import { Menu } from './Menu';
-import { deletePost } from '../store/actions';
+import { Menu } from '../Menu/Menu';
+import { deletePost } from '../../store/actions';
 import OrderBy from './OrderBy';
-import { sortBy } from '../utils';
+import { sortBy } from '../../utils';
 
 const styles = {
 	container: {

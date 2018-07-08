@@ -5,10 +5,10 @@ import {
 	fetchPostsByCategory,
 	getCategories,
 	setCategory
-} from './../store/actions';
-import PostsList from './PostsList';
-import { Header } from './Header';
-import CategoryTabs from './CategoryTabs';
+} from '../store/actions';
+import PostsList from '../components/Posts/PostsList';
+import { Header } from '../components/Header/Header';
+import CategoryTabs from '../components/Posts/CategoryTabs';
 
 class Home extends Component {
 	componentDidMount = () => {

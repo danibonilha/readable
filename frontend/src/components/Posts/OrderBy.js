@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { MenuItem, TextField } from '@material-ui/core/';
 import { connect } from 'react-redux';
-import { setSortBy } from '../store/actions';
+import { setSortBy } from '../../store/actions';
 
 const styles = {
 	container: {

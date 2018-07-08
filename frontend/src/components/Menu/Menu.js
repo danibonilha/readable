@@ -1,9 +1,8 @@
-
 import React, {Component} from 'react';
 import { List, ListItem } from '@material-ui/core';
 import Collapse from '@material-ui/core/Collapse';
 import { EditItem, DeleteItem } from './MenuItems';
-import EditPost from './EditPost';
+import EditPost from '../Posts/EditPost';
 
 const styles = {
 	container: {
