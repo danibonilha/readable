@@ -12,35 +12,38 @@ import CategoryTabs from '../components/Posts/CategoryTabs';
 
 class Home extends Component {
 	componentDidMount = () => {
-		const { fetchPosts, getCategories } = this.props;
-		fetchPosts();
-		getCategories();
-	};
-
-	componentDidUpdate = () => {
-		if (this.props.categories) {
-			this.handleQueryCategory();
-		}
+		this.props.getCategories()
+			.then(() => this.handleQueryCategory());
 	};
 
 	handleQueryCategory = () => {
 		const { match, setCategory } = this.props;
-		if (this.isCategoryValid()) {
-			setCategory(match.params.category);
+		const category = match.params.category || 'all';
+		if (category === 'all' || this.isCategoryValid()) {
+			setCategory(category);
+			this.handlePostsList(category);
 		}
 	};
 
 	isCategoryValid = () => {
 		const { categories, match } = this.props;
-		return categories.some((category) => category.name === match.params.category);
-	}
+		return categories.some(category => (
+			category.name === match.params.category
+		));
+	};
+
+	handlePostsList = (category) => {
+		const { fetchPostsByCategory, fetchPosts } = this.props;
+		if (category !== 'all') {
+			fetchPostsByCategory(category);
+		}	else {	
+			fetchPosts();
+		}				
+	};
 
 	handleChange = (event, value) => {
-		const { setCategory, fetchPostsByCategory, fetchPosts } = this.props;
-		setCategory(value);
-		value !== 'all'
-			? fetchPostsByCategory(value)
-			: fetchPosts();
+		this.props.setCategory(value);
+		this.handlePostsList(value);
 	};
 
 	render() {
@@ -63,10 +66,9 @@ const mapStateToProps = ({ CategoryReducer }) => {
 	};
 };
 
-export default connect(mapStateToProps,
-	{
-		fetchPosts,
-		fetchPostsByCategory,
-		getCategories,
-		setCategory
-	})(Home);
+export default connect(mapStateToProps,	{
+	fetchPosts,
+	fetchPostsByCategory,
+	getCategories,
+	setCategory
+})(Home);

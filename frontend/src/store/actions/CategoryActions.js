@@ -6,7 +6,7 @@ const storeCategories = (categories) => ({
 	payload: categories
 });
 
-const getCategories = () => dispatch => (
+const getCategories = () => async dispatch => (
 	CategoriesService.getAll()
 		.then((res) => {
 			dispatch(
