@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Paper} from '@material-ui/core';
 import Vote from '../components/Vote/Vote';
 import { Menu } from '../components/Menu/Menu';
-import { deletePost, getPost, fetchComments } from '../store/actions';
+import { deletePost, getPost, fetchComments, createNewComment } from '../store/actions';
 import { Header } from '../components/Header/Header';
 import { CommentCount } from '../components/Posts/PostItems';
 import { PostDetailsInfo } from '../components/Posts/PostDetailsItems';
@@ -27,15 +27,15 @@ const styles = {
 
 class PostDetails extends Component {
 	componentDidMount = () => {
-		const { match } = this.props;
-		this.props.getPost(match.params.id);
-		this.props.fetchComments(match.params.id);
+		const { match, getPost, fetchComments } = this.props;
+		getPost(match.params.id);
+		fetchComments(match.params.id);
 	}
 	onDeletePost = (id) => {
 		this.props.deletePost(id);
 	}
 	render() {
-		const { post } = this.props;
+		const { post, commentsCount } = this.props;
 		return (
 			<div>
 				<Header />
@@ -49,8 +49,8 @@ class PostDetails extends Component {
 							author={post.author}
 							body={post.body}
 						/>
-						<CommentCount number={post.commentCount} />
-						<AddComment parentId={post.id}/>
+						<CommentCount number={commentsCount} />
+						<AddComment parentId={post.id} />
 					</div>					
 					<Menu
 						open={true}
@@ -64,12 +64,14 @@ class PostDetails extends Component {
 	}
 }
 
-const mapStateToProps = ({ PostsReducer }, ownProps) => {
+const mapStateToProps = ({ PostsReducer, CommentsReducer }, ownProps) => {
 	const { posts } = PostsReducer;
+	const { comments } = CommentsReducer;
 	const { id } = ownProps.match.params;
 	return {
-		post: posts[id] ? posts[id] : {}
+		post: posts[id] ? posts[id] : {},
+		commentsCount: Object.keys(comments).length
 	};
 };
 
-export default connect(mapStateToProps, { deletePost, getPost, fetchComments })(PostDetails);
+export default connect(mapStateToProps, { deletePost, getPost, fetchComments, createNewComment })(PostDetails);

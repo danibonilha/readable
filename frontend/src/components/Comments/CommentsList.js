@@ -5,6 +5,7 @@ import Vote from '../Vote/Vote';
 import { Menu } from '../Menu/Menu';
 import { fetchComments, deleteComment } from '../../store/actions';
 import { Comment } from './Comment';
+import { sortBy } from '../../utils';
 
 const styles = {
 	container: {
@@ -62,7 +63,7 @@ class CommentsList extends Component {
 const mapStateToProps = ({ CommentsReducer }) => {
 	const { comments } = CommentsReducer;
 	return {
-		comments: Object.values(comments)
+		comments: sortBy('votes', Object.values(comments))
 	};
 };
 

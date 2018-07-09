@@ -15,7 +15,6 @@ class AddPost extends Component {
 	handleClose = () => {
 		this.setState({ open: false });
 	};
-
 	handleSubmit = form => e => {
 		e.preventDefault();
 		const { parentId, createNewComment } = this.props;
