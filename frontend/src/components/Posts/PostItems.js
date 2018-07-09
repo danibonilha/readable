@@ -37,7 +37,7 @@ const styles = {
 		width: 150,
 		alignSelf: 'flex-start',
 		paddingTop: 13,
-		textAlign: 'center'
+		textAlign: 'inherit'
 	}
 };
 
@@ -48,11 +48,13 @@ const PostImage = () => (
 	/>
 );
 
-const commentText = (number) => (
-	number > 0
-		? `${number} comments`
-		: 'No comments yet!'
-);
+const commentText = (number = 0) => {
+	switch (number.toString()) {
+		case '0': return 'No comments yet!';
+		case '1': return `${number} comment`;
+		default: return `${number} comments`;
+	}
+};
 
 const CommentCount = ({ number }) => (
 	<div style={styles.comment.container}>

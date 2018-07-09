@@ -1,4 +1,4 @@
-import { STORE_POSTS, UPDATE_VOTESCORE, DELETE_POST, STORE_BY_CATEGORY, SET_ORDER_BY } from '../actions/types';
+import { STORE_POSTS, UPDATE_POST_VOTESCORE, DELETE_POST, STORE_BY_CATEGORY, SET_ORDER_BY } from '../actions/types';
 import { PostsService } from './../../services';
 import { normalize, schema } from 'normalizr';
 
@@ -70,7 +70,7 @@ const getPost = (id) => dispatch => (
 );
 
 const voteScoreUpdate = (post) => ({
-	type: UPDATE_VOTESCORE,
+	type: UPDATE_POST_VOTESCORE,
 	payload: post
 });
 

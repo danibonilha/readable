@@ -34,7 +34,7 @@ const updateVote = (id, voteType) => (
 		}
 	})
 );
-const update = (id, { body }) => {
+const update = (id, { body }) => (
 	request({
 		url: `comments/${id}/`,
 		method: 'PUT',
@@ -42,8 +42,8 @@ const update = (id, { body }) => {
 			timestamp: Date.now(),
 			body
 		}
-	});
-};
+	})
+);
 
 const remove = (id) => (
 	request({

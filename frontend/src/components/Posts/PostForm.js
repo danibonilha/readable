@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core/';
-import { TitleInput, AuthorInput, PostBodyInput, SelectCategory, PostButton, CancelButton } from './PostFormItems';
+import { DialogActions, DialogContent, DialogContentText } from '@material-ui/core/';
+import { TitleInput, AuthorInput, BodyInput, SelectCategory, PostButton, CancelButton } from './PostFormItems';
 
 class PostForm extends Component {
 	static defaultProps = {
@@ -27,7 +27,7 @@ class PostForm extends Component {
 		this.setState({
 			form: {
 				...this.state.form,
-				[input]: e.target.value
+				[input]: value
 			},
 		});
 		const { category } = this.state.form;
@@ -41,7 +41,6 @@ class PostForm extends Component {
 	render() {
 		return (
 			<form onSubmit={this.props.handleSubmit(this.state.form)}>
-				<DialogTitle id="form-dialog-title">Write!</DialogTitle>
 				<DialogContent>
 					<DialogContentText>
 						Have fun sharing your knowledge with others. =)
@@ -55,7 +54,7 @@ class PostForm extends Component {
 						value={this.state.form.author}
 						onChange={this.handleChange('author')}
 					/>}
-					<PostBodyInput
+					<BodyInput
 						value={this.state.form.body}
 						onChange={this.handleChange('body')}
 					/>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updatePostVote } from '../../store/actions';
+import { updatePostVote, updateCommentVote } from '../../store/actions';
 import { VoteDown, VoteUp, VoteScore } from './VoteItems';
 
 const styles = {
@@ -13,21 +13,37 @@ const styles = {
 };
 
 class Vote extends Component {
+	static defaultProps = {
+		comment: false
+	};
+
 	handleUpVote = () => {
-		this.props.updatePostVote(this.props.itemId, 'upVote');
+		const { itemId, comment, updatePostVote, updateCommentVote } = this.props;
+		if (comment) {
+			updateCommentVote(itemId, 'upVote');
+		}
+		else {
+			updatePostVote(itemId, 'upVote');
+		}
 	}
 	handleDownVote = () => {
-		this.props.updatePostVote(this.props.itemId, 'downVote');
+		const { itemId, comment, updatePostVote, updateCommentVote } = this.props;
+		if (comment) {
+			updateCommentVote(itemId, 'downVote');
+		}
+		else {
+			updatePostVote(itemId, 'downVote');
+		}
 	}
 	render() {
 		return (
 			<div style={styles.container}>
 				<VoteUp onClick={this.handleUpVote} />
-				<VoteScore voteScore={this.props.voteScore}/>
-				<VoteDown onClick={this.handleDownVote}/>
+				<VoteScore voteScore={this.props.voteScore} />
+				<VoteDown onClick={this.handleDownVote} />
 			</div>
 		);
 	}
 }
 
-export default connect(null, { updatePostVote })(Vote);
+export default connect(null, { updatePostVote, updateCommentVote })(Vote);

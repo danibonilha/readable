@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import { Paper} from '@material-ui/core';
 import Vote from '../components/Vote/Vote';
 import { Menu } from '../components/Menu/Menu';
-import { deletePost, getPost } from '../store/actions';
+import { deletePost, getPost, fetchComments } from '../store/actions';
 import { Header } from '../components/Header/Header';
 import { CommentCount } from '../components/Posts/PostItems';
 import { PostDetailsInfo } from '../components/Posts/PostDetailsItems';
+import CommentsList from './../components/Comments/CommentsList';
+import AddComment from '../components/Comments/AddComment';
 
 const styles = {
 	mainContainer: {
@@ -27,6 +29,7 @@ class PostDetails extends Component {
 	componentDidMount = () => {
 		const { match } = this.props;
 		this.props.getPost(match.params.id);
+		this.props.fetchComments(match.params.id);
 	}
 	onDeletePost = (id) => {
 		this.props.deletePost(id);
@@ -47,6 +50,7 @@ class PostDetails extends Component {
 							body={post.body}
 						/>
 						<CommentCount number={post.commentCount} />
+						<AddComment parentId={post.id}/>
 					</div>					
 					<Menu
 						open={true}
@@ -54,6 +58,7 @@ class PostDetails extends Component {
 						postToEdit={post}
 					/>
 				</Paper>
+				<CommentsList />				
 			</div>
 		);
 	}
@@ -67,4 +72,4 @@ const mapStateToProps = ({ PostsReducer }, ownProps) => {
 	};
 };
 
-export default connect(mapStateToProps, { deletePost, getPost })(PostDetails);
+export default connect(mapStateToProps, { deletePost, getPost, fetchComments })(PostDetails);

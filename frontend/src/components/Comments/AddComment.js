@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PostForm from './PostForm';
-import { createNewPost } from '../../store/actions';
+import { createNewComment } from '../../store/actions';
 import { NewItemDialog } from '../NewItemDialog';
+import CommentForm from './CommentForm';
 
 class AddPost extends Component {
 	state = {
@@ -18,18 +18,19 @@ class AddPost extends Component {
 
 	handleSubmit = form => e => {
 		e.preventDefault();
-		this.props.createNewPost(form);
+		const { parentId, createNewComment } = this.props;
+		createNewComment(form, parentId);
 	}
 
 	render() {
 		return (
 			<NewItemDialog
 				open={this.state.open}
-				buttonName="New Post"
+				buttonName="New Comment"
 				onClick={this.handleClickOpen}
 				onClose={this.handleClose}
 			>
-				<PostForm
+				<CommentForm
 					handleSubmit={this.handleSubmit}
 					onClose={this.handleClose}
 				/>
@@ -38,4 +39,4 @@ class AddPost extends Component {
 	}
 }
 
-export default connect(null, { createNewPost })(AddPost);
+export default connect(null, { createNewComment })(AddPost);

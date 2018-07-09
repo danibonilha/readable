@@ -25,7 +25,7 @@ const AuthorInput = ({ value, onChange }) => (
 		onChange={onChange}
 	/>
 );
-const PostBodyInput = ({ value, onChange }) => (
+const BodyInput = ({ value, onChange }) => (
 	<TextField
 		margin="dense"
 		id="body"
@@ -70,4 +70,4 @@ const PostButton = ({ onClick }) => (
 	</Button>
 );
 
-export { TitleInput, AuthorInput, PostBodyInput, SelectCategory, PostButton, CancelButton };
+export { TitleInput, AuthorInput, BodyInput, SelectCategory, PostButton, CancelButton };

@@ -1,4 +1,4 @@
-import { STORE_POSTS, UPDATE_VOTESCORE, DELETE_POST, STORE_BY_CATEGORY, SET_ORDER_BY } from '../actions/types';
+import { STORE_POSTS, UPDATE_POST_VOTESCORE, DELETE_POST, STORE_BY_CATEGORY, SET_ORDER_BY, UPDATE_COMMENT_COUNT } from '../actions/types';
 
 const INITIAL_STATE = {
 	posts: {},
@@ -17,7 +17,7 @@ export default (state = INITIAL_STATE, action) => {
 			};
 		case STORE_BY_CATEGORY:
 			return { ...state, posts: payload.posts };
-		case UPDATE_VOTESCORE:
+		case UPDATE_POST_VOTESCORE:
 			return {
 				...state,
 				posts: {
