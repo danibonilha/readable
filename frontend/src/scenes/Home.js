@@ -9,6 +9,7 @@ import {
 import PostsList from '../components/Posts/PostsList';
 import { Header } from '../components/Header/Header';
 import CategoryTabs from '../components/Posts/CategoryTabs';
+import { NotFound } from './NotFound';
 
 class Home extends Component {
 	componentDidMount = () => {
@@ -23,6 +24,9 @@ class Home extends Component {
 			setCategory(category);
 			this.handlePostsList(category);
 		}
+		else {
+			setCategory('invalid');
+		}
 	};
 
 	isCategoryValid = () => {
@@ -36,9 +40,9 @@ class Home extends Component {
 		const { fetchPostsByCategory, fetchPosts } = this.props;
 		if (category !== 'all') {
 			fetchPostsByCategory(category);
-		}	else {	
+		} else {
 			fetchPosts();
-		}				
+		}
 	};
 
 	handleChange = (event, value) => {
@@ -47,11 +51,17 @@ class Home extends Component {
 	};
 
 	render() {
+		const { currentCategory } = this.props;
+		if (currentCategory === 'invalid') {
+			return (
+				<NotFound />
+			);
+		}
 		return (
 			<div>
 				<Header />
 				<CategoryTabs
-					onChange={this.handleChange} 
+					onChange={this.handleChange}
 				/>
 				<PostsList />
 			</div>
@@ -60,13 +70,14 @@ class Home extends Component {
 }
 
 const mapStateToProps = ({ CategoryReducer }) => {
-	const { categories } = CategoryReducer;
+	const { categories, current } = CategoryReducer;
 	return {
-		categories
+		categories,
+		currentCategory: current
 	};
 };
 
-export default connect(mapStateToProps,	{
+export default connect(mapStateToProps, {
 	fetchPosts,
 	fetchPostsByCategory,
 	getCategories,

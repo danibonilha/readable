@@ -1,8 +1,9 @@
-import { STORE_POSTS, UPDATE_POST_VOTESCORE, DELETE_POST, STORE_BY_CATEGORY, SET_ORDER_BY, UPDATE_COMMENT_COUNT } from '../actions/types';
+import { STORE_POSTS, UPDATE_POST_VOTESCORE, DELETE_POST, STORE_BY_CATEGORY, SET_ORDER_BY, POST_ERROR } from '../actions/types';
 
 const INITIAL_STATE = {
 	posts: {},
-	sortType: ''
+	sortType: '',
+	hasErrored: false
 };
 export default (state = INITIAL_STATE, action) => {
 	const { payload } = action;
@@ -13,10 +14,11 @@ export default (state = INITIAL_STATE, action) => {
 				posts: {
 					...state.posts,
 					...payload.posts
-				}
+				},
+				hasErrored: false
 			};
 		case STORE_BY_CATEGORY:
-			return { ...state, posts: payload.posts };
+			return { ...state, posts: payload.posts, hasErrored: false };
 		case UPDATE_POST_VOTESCORE:
 			return {
 				...state,
@@ -36,6 +38,9 @@ export default (state = INITIAL_STATE, action) => {
 		}
 		case SET_ORDER_BY: {
 			return { ...state, sortType: payload };
+		}
+		case POST_ERROR: {
+			return { ...state, hasErrored: true };
 		}
 		default:
 			return state;

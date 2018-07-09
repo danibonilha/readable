@@ -1,4 +1,4 @@
-import { STORE_POSTS, UPDATE_POST_VOTESCORE, DELETE_POST, STORE_BY_CATEGORY, SET_ORDER_BY } from '../actions/types';
+import { STORE_POSTS, UPDATE_POST_VOTESCORE, DELETE_POST, STORE_BY_CATEGORY, SET_ORDER_BY, POST_ERROR } from '../actions/types';
 import { PostsService } from './../../services';
 import { normalize, schema } from 'normalizr';
 
@@ -22,9 +22,7 @@ const fetchPosts = () => dispatch => (
 			if (responsePosts.length > 0) {
 				posts = normalize(responsePosts, postsListSchema).entities;
 			}
-			dispatch(
-				storePosts(posts)
-			);
+			dispatch(storePosts(posts));
 		})
 );
 
@@ -35,9 +33,7 @@ const fetchPostsByCategory = (category) => dispatch => (
 			if (responsePosts.length > 0) {
 				posts = normalize(responsePosts, postsListSchema).entities;
 			}
-			dispatch(
-				storePostsByCategory(posts)
-			);
+			dispatch(storePostsByCategory(posts));
 		})
 );
 
@@ -49,24 +45,30 @@ const newPostObject = (post) => ({
 
 const createNewPost = (form) => dispatch => (
 	PostsService.create(form)
-		.then((post) => dispatch(
-			storePosts(newPostObject(post))
+		.then(post => (
+			dispatch(storePosts(newPostObject(post)))
 		))
 );
 
 const editPost = (id, infoToUpdate) => dispatch => (
 	PostsService.update(id, infoToUpdate)
-		.then((post) => dispatch(
-			storePosts(newPostObject(post))
+		.then(post => (
+			dispatch(storePosts(newPostObject(post)))
 		))
 );
 
-const getPost = (id) => dispatch => (
+const getPost = (id) => async dispatch => (
 	PostsService.getById(id)
 		.then((post) => {
-			dispatch(
-				storePosts(newPostObject(post))
-			);})
+			if (!Object.keys(post).length) {
+				throw new Error('Empty Object');
+			}
+			dispatch(storePosts(newPostObject(post)));
+		})
+		.catch((err) => {
+			dispatch({ type: POST_ERROR });
+			throw err;
+		})
 );
 
 const voteScoreUpdate = (post) => ({
@@ -76,8 +78,8 @@ const voteScoreUpdate = (post) => ({
 
 const updatePostVote = (id, voteType) => dispatch => (
 	PostsService.updateVote(id, voteType)
-		.then((post) => dispatch(
-			voteScoreUpdate(post)
+		.then(post => (
+			dispatch(voteScoreUpdate(post))
 		))
 );
 const removeFromState = (id) => ({
@@ -87,8 +89,8 @@ const removeFromState = (id) => ({
 
 const deletePost = (id) => dispatch => (
 	PostsService.remove(id)
-		.then((post) => dispatch(
-			removeFromState(post.id)
+		.then(post => (
+			dispatch(removeFromState(post.id))
 		))
 );
 
@@ -98,12 +100,12 @@ const setSortBy = (type) => ({
 });
 
 
-export { 
-	fetchPosts, 
-	updatePostVote, 
+export {
+	fetchPosts,
+	updatePostVote,
 	deletePost,
 	fetchPostsByCategory,
-	createNewPost, 
+	createNewPost,
 	editPost,
 	setSortBy,
 	getPost

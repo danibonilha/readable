@@ -2,6 +2,7 @@ import React from 'react';
 import { ListItem } from '@material-ui/core';
 import Link from 'react-router-dom/Link';
 import { PostImage, MenuListButton, PostInfo, DateInfo } from './PostItems';
+import { isMobile } from 'react-device-detect';
 
 const styles = {
 	link: {
@@ -17,7 +18,7 @@ const PostPreview = ({ post, onMenuClick }) => (
 	<ListItem button divider >
 		<Link style={styles.link}
 			to={`/${post.category}/${post.id}`}>
-			<PostImage />
+			{!isMobile && <PostImage />}
 			<PostInfo
 				title={post.title}
 				author={post.author}
@@ -25,7 +26,7 @@ const PostPreview = ({ post, onMenuClick }) => (
 			/>
 		</Link>
 		<MenuListButton onClick={onMenuClick} />
-		<DateInfo date={post.timestamp}/>
+		<DateInfo date={post.timestamp} />
 	</ListItem>
 );
 

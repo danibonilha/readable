@@ -7,6 +7,7 @@ import { Menu } from '../Menu/Menu';
 import { deletePost } from '../../store/actions';
 import OrderBy from './OrderBy';
 import { sortBy } from '../../utils';
+import { NoPosts } from './NoPosts';
 
 const styles = {
 	container: {
@@ -50,7 +51,8 @@ class PostsList extends Component {
 								/>
 							</div>
 						)) :
-						<p>No Posts Found!</p>}
+						<NoPosts />
+					}
 				</List>
 			</div>
 		);
@@ -65,3 +67,5 @@ const mapStateToProps = ({ PostsReducer }) => {
 };
 
 export default connect(mapStateToProps, { deletePost })(PostsList);
+
+
