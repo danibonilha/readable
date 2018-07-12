@@ -1,4 +1,4 @@
-import { STORE_COMMENTS, UPDATE_COMMENT_VOTESCORE, DELETE_COMMENT } from '../actions/types';
+import { STORE_COMMENTS, UPDATE_COMMENT_VOTESCORE, DELETE_COMMENT, RESET_STATE_COMMENT } from '../actions/types';
 
 const INITIAL_STATE = {
 	comments: {},
@@ -31,6 +31,8 @@ export default (state = INITIAL_STATE, action) => {
 				...state, comments: updatedComments
 			};
 		}
+		case RESET_STATE_COMMENT: 
+			return INITIAL_STATE;
 		default:
 			return state;
 	}

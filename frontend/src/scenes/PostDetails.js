@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Paper } from '@material-ui/core';
 import Vote from '../components/Vote/Vote';
 import { Menu } from '../components/Menu/Menu';
-import { deletePost, getPost, fetchComments, createNewComment } from '../store/actions';
+import { deletePost, getPost, fetchComments, createNewComment, resetInitialState } from '../store/actions';
 import { Header } from '../components/Header/Header';
 import { CommentCount } from '../components/Posts/PostItems';
 import { PostDetailsInfo } from '../components/Posts/PostDetailsItems';
@@ -27,6 +27,10 @@ const styles = {
 };
 
 class PostDetails extends Component {
+	constructor(props){
+		super(props);
+		this.props.resetInitialState();
+	}
 	componentDidMount = () => {
 		const { match, getPost, fetchComments } = this.props;
 		const { id } = match.params;
@@ -87,4 +91,4 @@ const mapStateToProps = ({ PostsReducer, CommentsReducer }, ownProps) => {
 	};
 };
 
-export default connect(mapStateToProps, { deletePost, getPost, fetchComments, createNewComment })(PostDetails);
+export default connect(mapStateToProps, { deletePost, getPost, fetchComments, createNewComment, resetInitialState })(PostDetails);

@@ -1,4 +1,4 @@
-import { STORE_COMMENTS, UPDATE_COMMENT_VOTESCORE, DELETE_COMMENT } from '../actions/types';
+import { STORE_COMMENTS, UPDATE_COMMENT_VOTESCORE, DELETE_COMMENT, RESET_STATE_COMMENT } from '../actions/types';
 import { CommentsService } from './../../services';
 import { normalize, schema } from 'normalizr';
 
@@ -75,11 +75,16 @@ const deleteComment = (id) => dispatch => (
 		))
 );
 
+const resetInitialState = () => ({
+	type: RESET_STATE_COMMENT
+});
+
 export { 
 	fetchComments, 
 	updateCommentVote, 
 	deleteComment,
 	createNewComment, 
 	editComment,
-	getComment
+	getComment,
+	resetInitialState
 };
