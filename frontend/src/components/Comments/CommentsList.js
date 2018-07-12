@@ -15,7 +15,7 @@ const styles = {
 	},
 	list: {
 		display: 'flex',
-		justifyContent: 'center',
+		justifyContent: 'center'
 	}
 };
 

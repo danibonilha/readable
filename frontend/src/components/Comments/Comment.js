@@ -6,7 +6,7 @@ const styles = {
 	container: {
 		display: 'flex',
 		flexDirection: 'column',
-		alignItems: 'right',
+		alignItems: 'flex-start',
 	}
 };
 
