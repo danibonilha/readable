@@ -1,4 +1,4 @@
-const idGenerator = () =>  Math.random().toString(36).substr(-8);
+const idGenerator = require('uuid/v4');
 
 const sortBy = (type, data) => {
 	switch (type) {
