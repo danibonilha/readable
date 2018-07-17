@@ -17,9 +17,7 @@ const fetchComments = (postId) => dispatch => (
 			if (responseComments.length > 0) {
 				comments = normalize(responseComments, commentsListSchema).entities;
 			}
-			dispatch(
-				storeComments(comments)
-			);
+			dispatch(storeComments(comments));
 		})
 );
 
@@ -30,26 +28,24 @@ const newCommentsObject = (comment) => ({
 });
 
 const createNewComment = (form, parentId) => async dispatch => (
-	CommentsService.create({...form, parentId})
-		.then((comment) => dispatch(
-			storeComments(newCommentsObject(comment))
+	CommentsService.create({ ...form, parentId })
+		.then(comment => (
+			dispatch(storeComments(newCommentsObject(comment)))
 		))
 );
 
 const editComment = (id, infoToUpdate) => dispatch => (
 	CommentsService.update(id, infoToUpdate)
-		.then((comment) => dispatch(
-			storeComments(newCommentsObject(comment))
+		.then(comment => (
+			dispatch(storeComments(newCommentsObject(comment)))
 		))
 );
 
 const getComment = (id) => dispatch => (
 	CommentsService.getById(id)
-		.then((comment) => {
-			dispatch(
-				storeComments(newCommentsObject(comment))
-			);
-		})
+		.then(comment => (
+			dispatch(storeComments(newCommentsObject(comment)))
+		))
 );
 
 const voteScoreUpdate = (comment) => ({
@@ -59,8 +55,8 @@ const voteScoreUpdate = (comment) => ({
 
 const updateCommentVote = (id, voteType) => dispatch => (
 	CommentsService.updateVote(id, voteType)
-		.then((comment) => dispatch(
-			voteScoreUpdate(comment)
+		.then(comment => (
+			dispatch(voteScoreUpdate(comment))
 		))
 );
 const removeFromState = (id) => ({
@@ -70,20 +66,21 @@ const removeFromState = (id) => ({
 
 const deleteComment = (id) => dispatch => (
 	CommentsService.remove(id)
-		.then((comment) => dispatch(
-			removeFromState(comment.id)
+		.then(comment => (
+			dispatch(removeFromState(comment.id))
 		))
 );
+
 
 const resetInitialState = () => ({
 	type: RESET_STATE_COMMENT
 });
 
-export { 
-	fetchComments, 
-	updateCommentVote, 
+export {
+	fetchComments,
+	updateCommentVote,
 	deleteComment,
-	createNewComment, 
+	createNewComment,
 	editComment,
 	getComment,
 	resetInitialState

@@ -8,11 +8,9 @@ const storeCategories = (categories) => ({
 
 const getCategories = () => async dispatch => (
 	CategoriesService.getAll()
-		.then((res) => {
-			dispatch(
-				storeCategories(res.categories)
-			);
-		})
+		.then(res => (
+			dispatch(storeCategories(res.categories))
+		))
 );
 
 const setCategory = (category) => ({
