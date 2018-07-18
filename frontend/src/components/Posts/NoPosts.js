@@ -1,4 +1,5 @@
 import React from 'react';
+import AddPost from './AddPost';
 
 const styles = {
 	text: {
@@ -12,7 +13,8 @@ const NoPosts = () => (
 			No posts yet!
 		</h2>
 		<h4 style={styles.text}>
-			Click on New Post above to add it.
+			Click below to add it 
+			<AddPost />
 		</h4>
 	</div>
 );

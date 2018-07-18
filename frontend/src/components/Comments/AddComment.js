@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createNewComment } from '../../store/actions';
-import { NewItemDialog } from '../NewItemDialog';
+import { NewItemDialog } from '../common/NewItemDialog';
 import CommentForm from './CommentForm';
 
 class AddPost extends Component {

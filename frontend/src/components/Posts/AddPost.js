@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PostForm from './PostForm';
 import { createNewPost } from '../../store/actions';
-import { NewItemDialog } from '../NewItemDialog';
+import { NewItemDialog } from '../common/NewItemDialog';
 
 class AddPost extends Component {
 	state = {

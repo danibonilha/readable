@@ -1,43 +1,21 @@
 import React from 'react';
 import { Button,	TextField, 	MenuItem  } from '@material-ui/core/';
 
-const TitleInput = ({ value, onChange }) => (
+const Input = ({ tag, value, onChange }) => (
 	<TextField
 		autoFocus
 		margin="dense"
-		id="title"
-		label="Title"
+		id={tag}
+		label={tag}
 		type="text"
-		value={value}
+		value={value}	
+		onChange={onChange}	
 		fullWidth
-		onChange={onChange}
+		multiline={tag === 'Body' ? true : false}
+		rows={tag === 'Body' ? '10' : '1'}
 	/>
 );
 
-const AuthorInput = ({ value, onChange }) => (
-	<TextField
-		margin="dense"
-		id="author"
-		label="Author"
-		type="text"
-		fullWidth
-		value={value}
-		onChange={onChange}
-	/>
-);
-const BodyInput = ({ value, onChange }) => (
-	<TextField
-		margin="dense"
-		id="body"
-		label="Body"
-		type="text"
-		multiline
-		rows="10"
-		fullWidth
-		value={value}
-		onChange={onChange}
-	/>
-);
 
 const SelectCategory = ({ current, categories, onChange}) => (
 	<TextField
@@ -70,4 +48,4 @@ const PostButton = ({ onClick }) => (
 	</Button>
 );
 
-export { TitleInput, AuthorInput, BodyInput, SelectCategory, PostButton, CancelButton };
+export { Input, SelectCategory, PostButton, CancelButton };

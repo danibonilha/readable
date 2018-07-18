@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { DialogActions, DialogContent } from '@material-ui/core/';
-import {  AuthorInput, BodyInput, PostButton, CancelButton } from '../Posts/PostFormItems';
+import { Input, PostButton, CancelButton } from '../common/FormItems';
 
 class CommentForm extends Component {
 	static defaultProps = {
@@ -30,11 +30,13 @@ class CommentForm extends Component {
 			<form onSubmit={this.props.handleSubmit(this.state.form)}>
 				<DialogContent>
 					{!this.props.editing && 
-					<AuthorInput
+					<Input
+					  tag="Author"
 						value={this.state.form.author}
 						onChange={this.handleChange('author')}
 					/>}
-					<BodyInput
+					<Input
+						tag='Body'
 						value={this.state.form.body}
 						onChange={this.handleChange('body')}
 					/>

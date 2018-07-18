@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { DialogActions, DialogContent, DialogContentText } from '@material-ui/core/';
-import { TitleInput, AuthorInput, BodyInput, SelectCategory, PostButton, CancelButton } from './PostFormItems';
+import { Input, SelectCategory, PostButton, CancelButton } from '../common/FormItems';
 
 class PostForm extends Component {
 	static defaultProps = {
@@ -45,32 +45,35 @@ class PostForm extends Component {
 					<DialogContentText>
 						Have fun sharing your knowledge with others. =)
 					</DialogContentText>
-					<TitleInput
+					<Input
+						tag='Title'
 						value={this.state.form.title}
 						onChange={this.handleChange('title')}
 					/>
-					{!this.props.editing && 
-					<AuthorInput
-						value={this.state.form.author}
-						onChange={this.handleChange('author')}
-					/>}
-					<BodyInput
+					{!this.props.editing &&
+						<Input
+							tag='Author'
+							value={this.state.form.author}
+							onChange={this.handleChange('author')}
+						/>}
+					<Input
+						tag='Body'
 						value={this.state.form.body}
 						onChange={this.handleChange('body')}
 					/>
-					{!this.props.editing && 
-					<SelectCategory
-						categories={this.props.categories}
-						current={this.state.form.category}
-						onChange={this.handleChange('category')} 
-					/>}
+					{!this.props.editing &&
+						<SelectCategory
+							categories={this.props.categories}
+							current={this.state.form.category}
+							onChange={this.handleChange('category')}
+						/>}
 				</DialogContent>
 				<DialogActions>
 					<CancelButton onClick={this.props.onClose} />
 					{this.state.showSubmit &&
-						<PostButton 
-							type='submit' 
-							onClick={this.props.onClose} 
+						<PostButton
+							type='submit'
+							onClick={this.props.onClose}
 						/>}
 				</DialogActions>
 			</form>
