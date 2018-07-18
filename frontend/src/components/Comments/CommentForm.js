@@ -29,12 +29,12 @@ class CommentForm extends Component {
 		return (
 			<form onSubmit={this.props.handleSubmit(this.state.form)}>
 				<DialogContent>
-					{!this.props.editing && 
-					<Input
-					  tag="Author"
-						value={this.state.form.author}
-						onChange={this.handleChange('author')}
-					/>}
+					{!this.props.editing &&
+						<Input
+							tag="Author"
+							value={this.state.form.author}
+							onChange={this.handleChange('author')}
+						/>}
 					<Input
 						tag='Body'
 						value={this.state.form.body}
@@ -43,9 +43,9 @@ class CommentForm extends Component {
 				</DialogContent>
 				<DialogActions>
 					<CancelButton onClick={this.props.onClose} />
-					<PostButton 
-						type='submit' 
-						onClick={this.props.onClose} 
+					<PostButton
+						type='submit'
+						onClick={this.props.onClose}
 					/>
 				</DialogActions>
 			</form>
