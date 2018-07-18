@@ -1,4 +1,11 @@
-import { STORE_POSTS, UPDATE_POST_VOTESCORE, DELETE_POST, STORE_BY_CATEGORY, SET_ORDER_BY, POST_ERROR } from '../actions/types';
+import {
+	STORE_POSTS,
+	UPDATE_POST_VOTESCORE,
+	DELETE_POST,
+	STORE_BY_CATEGORY,
+	SET_ORDER_BY,
+	POST_ERROR
+} from '../actions/types';
 import { PostsService } from './../../services';
 import { normalize, schema } from 'normalizr';
 
@@ -15,27 +22,24 @@ const storePostsByCategory = (posts) => ({
 	payload: posts
 });
 
-const fetchPosts = () => dispatch => (
-	PostsService.getAll()
-		.then((responsePosts) => {
-			let posts = { posts: responsePosts };
-			if (responsePosts.length > 0) {
-				posts = normalize(responsePosts, postsListSchema).entities;
-			}
-			dispatch(storePosts(posts));
-		})
-);
+const fetchPosts = () => async dispatch => {
+	const responsePosts = await PostsService.getAll();
+	let posts = { posts: responsePosts };
+	if (responsePosts.length > 0) {
+		posts = normalize(responsePosts, postsListSchema).entities;
+	}
+	dispatch(storePosts(posts));
 
-const fetchPostsByCategory = (category) => dispatch => (
-	PostsService.getByCategory(category)
-		.then((responsePosts) => {
-			let posts = { posts: responsePosts };
-			if (responsePosts.length > 0) {
-				posts = normalize(responsePosts, postsListSchema).entities;
-			}
-			dispatch(storePostsByCategory(posts));
-		})
-);
+};
+
+const fetchPostsByCategory = (category) => async dispatch => {
+	const responsePosts = await PostsService.getByCategory(category);
+	let posts = { posts: responsePosts };
+	if (responsePosts.length > 0) {
+		posts = normalize(responsePosts, postsListSchema).entities;
+	}
+	dispatch(storePostsByCategory(posts));
+};
 
 const newPostObject = (post) => ({
 	'posts': {
@@ -43,19 +47,15 @@ const newPostObject = (post) => ({
 	}
 });
 
-const createNewPost = (form) => dispatch => (
-	PostsService.create(form)
-		.then(post => (
-			dispatch(storePosts(newPostObject(post)))
-		))
-);
+const createNewPost = (form) => async dispatch => {
+	const post = await PostsService.create(form);
+	dispatch(storePosts(newPostObject(post)));
+};
 
-const editPost = (id, infoToUpdate) => dispatch => (
-	PostsService.update(id, infoToUpdate)
-		.then(post => (
-			dispatch(storePosts(newPostObject(post)))
-		))
-);
+const editPost = (id, infoToUpdate) => async dispatch => {
+	const post = await PostsService.update(id, infoToUpdate);
+	dispatch(storePosts(newPostObject(post)));
+};
 
 const getPost = (id) => async dispatch => (
 	PostsService.getById(id)
@@ -76,23 +76,19 @@ const voteScoreUpdate = (post) => ({
 	payload: post
 });
 
-const updatePostVote = (id, voteType) => dispatch => (
-	PostsService.updateVote(id, voteType)
-		.then(post => (
-			dispatch(voteScoreUpdate(post))
-		))
-);
+const updatePostVote = (id, voteType) => async dispatch => {
+	const post = await PostsService.updateVote(id, voteType);
+	dispatch(voteScoreUpdate(post));
+};
 const removeFromState = (id) => ({
 	type: DELETE_POST,
 	payload: id
 });
 
-const deletePost = (id) => dispatch => (
-	PostsService.remove(id)
-		.then(post => (
-			dispatch(removeFromState(post.id))
-		))
-);
+const deletePost = (id) => async dispatch => {
+	const post = await PostsService.remove(id);
+	dispatch(removeFromState(post.id));
+};
 
 const setSortBy = (type) => ({
 	type: SET_ORDER_BY,

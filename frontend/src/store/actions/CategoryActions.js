@@ -6,12 +6,10 @@ const storeCategories = (categories) => ({
 	payload: categories
 });
 
-const getCategories = () => async dispatch => (
-	CategoriesService.getAll()
-		.then(res => (
-			dispatch(storeCategories(res.categories))
-		))
-);
+const getCategories = () => async dispatch => {
+	const res = await CategoriesService.getAll();
+	return dispatch(storeCategories(res.categories));
+};
 
 const setCategory = (category) => ({
 	type: SET_CURRENT_CATEGORY,

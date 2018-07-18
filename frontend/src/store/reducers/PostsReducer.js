@@ -1,4 +1,10 @@
-import { STORE_POSTS, UPDATE_POST_VOTESCORE, DELETE_POST, STORE_BY_CATEGORY, SET_ORDER_BY, POST_ERROR } from '../actions/types';
+import {
+	STORE_POSTS,
+	UPDATE_POST_VOTESCORE,
+	DELETE_POST,
+	STORE_BY_CATEGORY,
+	SET_ORDER_BY, POST_ERROR
+} from '../actions/types';
 
 const INITIAL_STATE = {
 	posts: {},
