@@ -26,6 +26,10 @@ export default (state = INITIAL_STATE, action) => {
 				}
 			};
 		case DELETE_COMMENT: {
+			/* With destructing it separates the posts that should be deleted 
+			 * and using the rest pattern is possible to assign the 
+			 * rest of the object to updatedPosts variable
+		   */
 			const { [payload]: deleted, ...updatedComments } = state.comments;
 			return {
 				...state, comments: updatedComments

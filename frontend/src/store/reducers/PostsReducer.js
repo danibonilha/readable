@@ -37,6 +37,10 @@ export default (state = INITIAL_STATE, action) => {
 				}
 			};
 		case DELETE_POST: {
+			/* With destructing it separates the posts that should be deleted 
+			 * and using the rest pattern is possible to assign the 
+			 * rest of the object to updatedPosts variable
+		   */
 			const { [payload]: deleted, ...updatedPosts } = state.posts;
 			return {
 				...state, posts: updatedPosts
