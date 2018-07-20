@@ -2,7 +2,6 @@ import React from 'react';
 import { ListItemSecondaryAction, IconButton, ListItemIcon, ListItemText } from '@material-ui/core';
 import { Comment, Menu } from '@material-ui/icons';
 import { colors } from '../../utils';
-import * as moment from 'moment';
 
 const styles = {
 	img: {
@@ -92,11 +91,4 @@ const PostInfo = ({ title, author, commentCount }) => (
 	</div>
 );
 
-const DateInfo = ({ date }) => (
-	<ListItemText
-		style={styles.date}
-		secondary={moment(date).fromNow()}
-	/>
-);
-
-export { PostImage, CommentCount, MenuListButton, PostInfo, DateInfo };
+export { PostImage, CommentCount, MenuListButton, PostInfo };

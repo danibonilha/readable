@@ -45,9 +45,10 @@ class Home extends Component {
 		}
 	};
 
-	handleChange = (event, value) => {
-		this.props.setCategory(value);
-		this.handlePostsList(value);
+	handleChange = (event, category) => {
+		event.preventDefault();
+		this.props.setCategory(category);
+		this.handlePostsList(category);
 	};
 
 	render() {

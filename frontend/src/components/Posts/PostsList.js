@@ -27,6 +27,7 @@ class PostsList extends Component {
 			menuOpen: !prevState.menuOpen
 		}));
 	};
+	
 	handleClose = () => {
 		this.setState({ editOpen: false });
 	};

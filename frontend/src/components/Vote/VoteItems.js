@@ -18,33 +18,37 @@ const styles = {
 	}
 };
 
-const VoteUp = ({ onClick }) =>  (
+const VoteButton = ({ onClick, type, children }) => (
 	<IconButton
 		style={styles.icon}
-		aria-label="Vote Up"
+		aria-label={type}
 		onClick={onClick}
 	>
-		<ArrowDropUp style={styles.arrow} />
+		{children}
 	</IconButton>
-			
+);
+
+const VoteUp = ({ onClick }) => (
+	<VoteButton
+		type="Vote Up"
+		onClick={onClick}>
+		<ArrowDropUp style={styles.arrow} />
+	</VoteButton >
 );
 
 const VoteDown = ({ onClick }) => (
-	<IconButton
-		style={styles.icon}
-		aria-label="Vote Down"
-		onClick={onClick}
-	>
+	<VoteButton
+		type="Vote Down"
+		onClick={onClick}>
 		<ArrowDropDown style={styles.arrow} />
-	</IconButton>
-
-); 
+	</VoteButton >
+);
 
 const VoteScore = ({ voteScore }) => (
 	<ListItemText
 		style={styles.text}
 		secondary={voteScore}
 	/>
-); 
+);
 
 export { VoteUp, VoteDown, VoteScore };

@@ -1,7 +1,8 @@
 import React from 'react';
 import { ListItem } from '@material-ui/core';
 import Link from 'react-router-dom/Link';
-import { PostImage, MenuListButton, PostInfo, DateInfo } from './PostItems';
+import { PostImage, MenuListButton, PostInfo } from './PostItems';
+import { DateInfo } from '../common/Date';
 import { isMobile } from 'react-device-detect';
 
 const styles = {
