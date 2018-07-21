@@ -3,7 +3,13 @@ import { connect } from 'react-redux';
 import { Paper } from '@material-ui/core';
 import Vote from '../components/Vote/Vote';
 import { Menu } from '../components/Menu/Menu';
-import { deletePost, getPost, fetchComments, createNewComment, resetInitialState } from '../store/actions';
+import {
+	deletePost,
+	getPost,
+	fetchComments,
+	createNewComment,
+	resetInitialState
+} from '../store/actions';
 import { Header } from '../components/Header/Header';
 import { CommentCount } from '../components/Posts/PostItems';
 import { PostDetailsInfo } from '../components/Posts/PostDetailsItems';
@@ -27,7 +33,7 @@ const styles = {
 };
 
 class PostDetails extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.props.resetInitialState();
 	}
@@ -44,7 +50,7 @@ class PostDetails extends Component {
 		deletePost(id);
 		history.goBack();
 	}
-	
+
 	render() {
 		const { post, commentsCount, postNotFound } = this.props;
 		if (postNotFound) {

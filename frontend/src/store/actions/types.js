@@ -1,5 +1,4 @@
 /***************************POST_TYPES*******************************/
-export const FETCH_POSTS = 'FETCH_POSTS';
 export const STORE_POSTS = 'STORE_POSTS';
 export const STORE_BY_CATEGORY = 'STORE_BY_CATEGORY';
 export const CREATE_POST = 'CREATE_POST';

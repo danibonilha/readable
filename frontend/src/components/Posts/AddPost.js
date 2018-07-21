@@ -9,12 +9,9 @@ class AddPost extends Component {
 		open: false
 	};
 
-	handleClickOpen = () => {
-		this.setState({ open: true });
-	};
-	handleClose = () => {
-		this.setState({ open: false });
-	};
+	handleClickOpen = () => this.setState({ open: true });
+	
+	handleClose = () => this.setState({ open: false });
 
 	handleSubmit = form => e => {
 		e.preventDefault();
