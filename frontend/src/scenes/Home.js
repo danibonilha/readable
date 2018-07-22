@@ -46,7 +46,6 @@ class Home extends Component {
 	};
 
 	handleChange = (event, category) => {
-		event.preventDefault();
 		this.props.setCategory(category);
 		this.handlePostsList(category);
 	};

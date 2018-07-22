@@ -8,7 +8,8 @@ import {
 	getPost,
 	fetchComments,
 	createNewComment,
-	resetInitialState
+	resetInitialState,
+	getCategories
 } from '../store/actions';
 import { Header } from '../components/Header/Header';
 import { CommentCount } from '../components/Posts/PostItems';
@@ -38,11 +39,12 @@ class PostDetails extends Component {
 		this.props.resetInitialState();
 	}
 	componentDidMount = () => {
-		const { match, getPost, fetchComments } = this.props;
+		const { match, getPost, fetchComments, getCategories } = this.props;
 		const { id } = match.params;
 		getPost(id)
 			.then(() => fetchComments(id))
 			.catch((err) => console.log(err));
+		getCategories();	
 	}
 
 	onDeletePost = (id) => {
@@ -102,5 +104,7 @@ export default connect(mapStateToProps, {
 	deletePost,
 	getPost,
 	fetchComments,
-	createNewComment, resetInitialState
+	createNewComment, 
+	resetInitialState,
+	getCategories
 })(PostDetails);
