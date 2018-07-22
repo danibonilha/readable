@@ -1,6 +1,6 @@
 # Readable React Nanodegree Project
 
-This is a R eddit like web app built with React and Redux where users are able to add, remove, edit, vote and order posts and comments.
+This is a Reddit like web app built with React and Redux where users are able to add, remove, edit, vote and order posts and comments.
 
 ## How to run 
 
@@ -10,7 +10,7 @@ To get started first you need to start the API server, then the react app.
     - `cd api-server`
     - `npm install`
     - `node server`
-* In another terminal window, run the frontend application
+* In another terminal window, run the front-end application
     - `cd frontend`
     - `npm install`
     - `npm start`
