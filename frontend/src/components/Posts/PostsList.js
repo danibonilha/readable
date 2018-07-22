@@ -35,6 +35,7 @@ class PostsList extends Component {
 	onDeletePost = (id) => {
 		this.props.deletePost(id);
 	}
+	
 	render() {
 		return (
 			<div>

@@ -25,6 +25,7 @@ class CommentForm extends Component {
 			},
 		});
 	};
+	
 	render() {
 		return (
 			<form onSubmit={this.props.handleSubmit(this.state.form)}>

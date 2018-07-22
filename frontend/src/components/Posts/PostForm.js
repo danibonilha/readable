@@ -11,6 +11,7 @@ class PostForm extends Component {
 		category: '',
 		editing: false
 	};
+	
 	state = {
 		showSubmit: false,
 		form: {
@@ -72,7 +73,6 @@ class PostForm extends Component {
 					<CancelButton onClick={this.props.onClose} />
 					{this.state.showSubmit &&
 						<PostButton
-							type='submit'
 							onClick={this.props.onClose}
 						/>}
 				</DialogActions>

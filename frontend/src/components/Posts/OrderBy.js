@@ -10,10 +10,12 @@ const styles = {
 		justifyContent: 'center'
 	}
 };
+
 class OrderBy extends Component {
 	handleChange = event => {
 		this.props.setSortBy(event.target.value);
 	};
+	
 	render() {
 		return (
 			<div style={styles.container}>

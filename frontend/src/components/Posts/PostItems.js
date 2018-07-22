@@ -42,8 +42,7 @@ const styles = {
 };
 
 const PostImage = () => (
-	<img
-		alt='post' style={styles.img}
+	<img alt='post' style={styles.img}
 		src={require('../assets/post-image.jpg')}
 	/>
 );

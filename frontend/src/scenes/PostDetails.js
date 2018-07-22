@@ -64,7 +64,8 @@ class PostDetails extends Component {
 				<Paper elevation={1} style={styles.mainContainer}>
 					<Vote
 						itemId={post.id}
-						voteScore={post.voteScore} />
+						voteScore={post.voteScore}
+					/>
 					<div style={styles.secondContainer}>
 						<PostDetailsInfo
 							title={post.title}
@@ -97,4 +98,9 @@ const mapStateToProps = ({ PostsReducer, CommentsReducer }, ownProps) => {
 	};
 };
 
-export default connect(mapStateToProps, { deletePost, getPost, fetchComments, createNewComment, resetInitialState })(PostDetails);
+export default connect(mapStateToProps, {
+	deletePost,
+	getPost,
+	fetchComments,
+	createNewComment, resetInitialState
+})(PostDetails);

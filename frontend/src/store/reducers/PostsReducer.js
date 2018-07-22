@@ -11,6 +11,7 @@ const INITIAL_STATE = {
 	sortType: '',
 	hasErrored: false
 };
+
 export default (state = INITIAL_STATE, action) => {
 	const { payload } = action;
 	switch (action.type) {

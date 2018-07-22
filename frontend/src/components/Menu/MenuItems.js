@@ -23,7 +23,7 @@ const styles = {
 	}
 };
 
-const Button = ({ onClick, type, styles, children }) => (
+const Button = ({ styles = {}, children, onClick, type }) => (
 	<IconButton
 		aria-label={type}
 		onClick={onClick}
@@ -37,7 +37,7 @@ const EditItem = ({ onClick }) => (
 	<Button
 		type="Edit"
 		onClick={onClick}
-		style={styles.edit}
+		styles={styles.edit}
 	>
 		<Edit
 			style={{
@@ -49,7 +49,7 @@ const EditItem = ({ onClick }) => (
 );
 
 const DeleteItem = ({ onClick }) => (
-	<Button type="Delete" onClick={onClick}	>
+	<Button type="Delete" onClick={onClick} >
 		<Delete
 			style={{
 				...styles.icon,

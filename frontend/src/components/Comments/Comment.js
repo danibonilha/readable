@@ -24,7 +24,7 @@ const CommentInfo = ({ body, author }) => (
 	<div style={{ marginTop: 10}}>
 		<ListItemText
 			primary={body}
-			secondary={`by: ${author}`}
+			secondary={`author: ${author}`}
 		/>
 	</div>
 );

@@ -1,7 +1,13 @@
 import React from 'react';
 import { Button, Dialog } from '@material-ui/core/';
 
-const NewItemDialog = ({ open, onClick, onClose, buttonName, children }) => (
+const NewItemDialog = ({
+	open,
+	onClick,
+	onClose,
+	buttonName,
+	children
+}) => (
 	<div>
 		<Button onClick={onClick} >
 			{buttonName}

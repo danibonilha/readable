@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { List, ListItem } from '@material-ui/core';
-import Collapse from '@material-ui/core/Collapse';
+import { List, ListItem, Collapse } from '@material-ui/core';
 import { EditItem, DeleteItem } from './MenuItems';
 import EditPost from '../Posts/EditPost';
 import EditComment from './../Comments/EditComment';
