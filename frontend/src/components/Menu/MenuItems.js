@@ -23,29 +23,40 @@ const styles = {
 	}
 };
 
-
-const EditItem = ({ onClick }) => (
+const Button = ({ onClick, type, styles, children }) => (
 	<IconButton
-		aria-label="Edit"
+		aria-label={type}
 		onClick={onClick}
-		style={{...styles.iconButton, ...styles.edit}}
+		style={{ ...styles.iconButton, ...styles }}
 	>
-		<Edit 
-			style={{...styles.icon, ...styles.editColor}}
-		/>
+		{children}
 	</IconButton>
 );
 
-const DeleteItem = ({ onClick }) => (
-	<IconButton
-		aria-label="Delete"
+const EditItem = ({ onClick }) => (
+	<Button
+		type="Edit"
 		onClick={onClick}
-		style={styles.iconButton}
+		style={styles.edit}
 	>
-		<Delete 
-			style={{...styles.icon, ...styles.deleteColor}} 
+		<Edit
+			style={{
+				...styles.icon,
+				...styles.editColor
+			}}
 		/>
-	</IconButton>
+	</Button>
+);
+
+const DeleteItem = ({ onClick }) => (
+	<Button type="Delete" onClick={onClick}	>
+		<Delete
+			style={{
+				...styles.icon,
+				...styles.deleteColor
+			}}
+		/>
+	</Button>
 );
 
 export { EditItem, DeleteItem };
