@@ -1,22 +1,41 @@
-# Readable API Server
+# Readable React Nanodegree Project
 
-This is the starter project for the final assessment project for Udacity's Redux course where you will build a content and comment web app. Users will be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.
+This is a R eddit like web app built with React and Redux where users are able to add, remove, edit, vote and order posts and comments.
 
-This repository includes the code for the backend API Server that you'll use to develop and interact with the front-end portion of the project.
+## How to run 
 
-## Start Developing
-
-To get started developing right away:
+To get started first you need to start the API server, then the react app.
 
 * Install and start the API server
     - `cd api-server`
     - `npm install`
     - `node server`
-* In another terminal window, use Create React App to scaffold out the front-end
-    - `create-react-app frontend`
+* In another terminal window, run the frontend application
     - `cd frontend`
+    - `npm install`
     - `npm start`
 
-## API Server
+## Front-End
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+### Libraries
+
+These are the main libraries used in this project:
+
+* [Redux](https://redux.js.org/)
+* [Redux Thunk](https://github.com/reduxjs/redux-thunk)
+* [Material-UI](https://material-ui.com/)
+* [React Router](https://github.com/ReactTraining/react-router)
+* [normalizr](https://github.com/paularmstrong/normalizr)
+* [moment](https://momentjs.com/)
+* [axios](https://github.com/axios/axios)
+* [react-device-detect](https://github.com/duskload/react-device-detect)
+* [uuid](https://www.npmjs.com/package/uuid)
+
+## API Server
 Information about the API server and how to use it can be found in its [README file](api-server/README.md).
+
+### Roadmap
+
+* Deploy live demo in Heroku
+* Add jss to remove styling from style property and use className to improve performance.
