@@ -50,7 +50,7 @@ class PostDetails extends Component {
 	onDeletePost = (id) => {
 		const { deletePost, history } = this.props;
 		deletePost(id);
-		history.goBack();
+		history.replace('/');
 	}
 
 	render() {
