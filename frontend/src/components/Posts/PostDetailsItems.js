@@ -1,5 +1,7 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
+import { BackButton } from '../common/BackButton';
+import { TwitterShareButton, TwitterIcon, FacebookShareButton, FacebookIcon, LinkedinIcon, LinkedinShareButton } from 'react-share';
 
 const styles = {
 	container: {
@@ -8,7 +10,8 @@ const styles = {
 	},
 	title: { margin: 10 },
 	author: { margin: 5 },
-	body: { margin: 20 }
+	body: { margin: 20 },
+	backContainer: { display: 'flex', flexDirection: 'column', alignItems: 'center' }
 };
 
 const PostDetailsInfo = ({ title, author, body }) => (
@@ -50,4 +53,28 @@ const PostBody = ({ body }) => (
 	</Typography>
 );
 
-export { PostDetailsInfo };
+const BackAndShare = ({ onBackClicked, url }) => (
+	<div style={styles.backContainer}>
+		<BackButton onClick={onBackClicked} />
+		<TwitterShareButton url={url}>
+			<TwitterIcon
+				size={32}
+				round 
+			/>
+		</TwitterShareButton>
+		<FacebookShareButton url={url}>
+			<FacebookIcon
+				size={32}
+				round 
+			/>
+		</FacebookShareButton>
+		<LinkedinShareButton url={url}>
+			<LinkedinIcon
+				size={32}
+				round 
+			/>
+		</LinkedinShareButton>
+	</div>
+);
+
+export { PostDetailsInfo, BackAndShare };

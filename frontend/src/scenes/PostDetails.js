@@ -13,7 +13,7 @@ import {
 } from '../store/actions';
 import { Header } from '../components/Header/Header';
 import { CommentCount } from '../components/Posts/PostItems';
-import { PostDetailsInfo } from '../components/Posts/PostDetailsItems';
+import { PostDetailsInfo, BackAndShare } from '../components/Posts/PostDetailsItems';
 import CommentsList from './../components/Comments/CommentsList';
 import AddComment from '../components/Comments/AddComment';
 import { NotFound } from './NotFound';
@@ -44,7 +44,7 @@ class PostDetails extends Component {
 		getPost(id)
 			.then(() => fetchComments(id))
 			.catch((err) => console.log(err));
-		getCategories();	
+		getCategories();
 	}
 
 	onDeletePost = (id) => {
@@ -52,6 +52,10 @@ class PostDetails extends Component {
 		deletePost(id);
 		history.replace('/');
 	}
+
+	handleBackButton = () => {
+	 console.log(this.props.history);
+	}	
 
 	render() {
 		const { post, commentsCount, postNotFound } = this.props;
@@ -64,10 +68,15 @@ class PostDetails extends Component {
 			<div>
 				<Header />
 				<Paper elevation={1} style={styles.mainContainer}>
+					<BackAndShare 
+						url={window.location.href}
+						onBackClicked={this.handleBackButton}	
+					/>
 					<Vote
 						itemId={post.id}
 						voteScore={post.voteScore}
 					/>
+
 					<div style={styles.secondContainer}>
 						<PostDetailsInfo
 							title={post.title}
@@ -104,7 +113,7 @@ export default connect(mapStateToProps, {
 	deletePost,
 	getPost,
 	fetchComments,
-	createNewComment, 
+	createNewComment,
 	resetInitialState,
 	getCategories
 })(PostDetails);
