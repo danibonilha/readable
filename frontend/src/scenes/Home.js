@@ -9,7 +9,7 @@ import {
 import PostsList from '../components/Posts/PostsList';
 import { Header } from '../components/Header/Header';
 import CategoryTabs from '../components/Posts/CategoryTabs';
-import { NotFound } from './NotFound';
+import NotFound from './NotFound';
 
 class Home extends Component {
 	componentDidMount = () => {
@@ -54,7 +54,9 @@ class Home extends Component {
 		const { currentCategory } = this.props;
 		if (currentCategory === 'invalid') {
 			return (
-				<NotFound />
+				<NotFound 
+					showPostsOnBack={this.handlePostsList}
+				/>
 			);
 		}
 		return (

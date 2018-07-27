@@ -16,7 +16,7 @@ import { CommentCount } from '../components/Posts/PostItems';
 import { PostDetailsInfo, BackAndShare } from '../components/Posts/PostDetailsItems';
 import CommentsList from './../components/Comments/CommentsList';
 import AddComment from '../components/Comments/AddComment';
-import { NotFound } from './NotFound';
+import NotFound from './NotFound';
 
 const styles = {
 	mainContainer: {
@@ -53,10 +53,6 @@ class PostDetails extends Component {
 		history.replace('/');
 	}
 
-	handleBackButton = () => {
-	 console.log(this.props.history);
-	}	
-
 	render() {
 		const { post, commentsCount, postNotFound } = this.props;
 		if (postNotFound) {
@@ -70,7 +66,7 @@ class PostDetails extends Component {
 				<Paper elevation={1} style={styles.mainContainer}>
 					<BackAndShare 
 						url={window.location.href}
-						onBackClicked={this.handleBackButton}	
+						backTo={'/'}
 					/>
 					<Vote
 						itemId={post.id}

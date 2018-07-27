@@ -53,9 +53,9 @@ const PostBody = ({ body }) => (
 	</Typography>
 );
 
-const BackAndShare = ({ onBackClicked, url }) => (
+const BackAndShare = ({ backTo, url }) => (
 	<div style={styles.backContainer}>
-		<BackButton onClick={onBackClicked} />
+		<BackButton to={backTo} />
 		<TwitterShareButton url={url}>
 			<TwitterIcon
 				size={32}
