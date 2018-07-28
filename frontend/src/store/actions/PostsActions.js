@@ -49,8 +49,9 @@ const newPostObject = (post) => ({
 
 const createNewPost = (form, path) => async dispatch => {
 	const post = await PostsService.create(form);
-	if(path === form.category || path === '/')
+	if(path.substr(1) === form.category || path === '/'){
 		dispatch(storePosts(newPostObject(post)));
+	}
 };
 
 const editPost = (id, infoToUpdate) => async dispatch => {
