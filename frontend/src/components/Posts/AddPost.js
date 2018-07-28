@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PostForm from './PostForm';
 import { createNewPost } from '../../store/actions';
 import { NewItemDialog } from '../common/NewItemDialog';
+
 
 class AddPost extends Component {
 	state = {
@@ -14,8 +16,9 @@ class AddPost extends Component {
 	handleClose = () => this.setState({ open: false });
 
 	handleSubmit = form => e => {
+		const { createNewPost, location } = this.props;
 		e.preventDefault();
-		this.props.createNewPost(form);
+		createNewPost(form, location.pathname);
 	}
 
 	render() {
@@ -35,4 +38,4 @@ class AddPost extends Component {
 	}
 }
 
-export default connect(null, { createNewPost })(AddPost);
+export default withRouter(connect(null, { createNewPost })(AddPost));
