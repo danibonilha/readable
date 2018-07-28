@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import injectSheet from 'react-jss';
 import { setCategory } from '../store/actions';
-import { SimpleHeader } from '../components/Header/SimpleHeader';
+import SimpleHeader from '../components/Header/SimpleHeader';
 import { BackButton } from '../components/common/BackButton';
+
 
 const styles = {
 	mainContainer: {
@@ -33,14 +35,15 @@ class NotFound extends Component {
 	}
 
 	render() {
+		const { classes } = this.props;
 		return (
-			<div style={styles.mainContainer}>
+			<div className={classes.mainContainer}>
 				<SimpleHeader />
 				<BackButton 
 					to={'/'} 
 					onClick={this.handleBackButton} 
 				/>
-				<div style={styles.textContainer}>
+				<div className={classes.textContainer}>
 					<h1>
 						<span
 							role="img"
@@ -49,7 +52,7 @@ class NotFound extends Component {
 						</span>
 					</h1>
 					<h1>404</h1>
-					<h1 style={styles.msgText}>
+					<h1 className={classes.msgText}>
 						Page not found!
 					</h1>
 				</div>
@@ -58,6 +61,4 @@ class NotFound extends Component {
 	}
 }
 
-export default connect(null, { setCategory })(NotFound);
-
-
+export default injectSheet(styles)(connect(null, { setCategory })(NotFound));

@@ -1,4 +1,5 @@
 import React from 'react';
+import injectSheet from 'react-jss';
 import { colors } from '../../utils';
 
 const styles = {
@@ -15,11 +16,15 @@ const styles = {
 	}
 };
 
-const SimpleHeader = ({ children }) =>(
-	<div style={styles.container}>
-		<h1 style={styles.title}>Readable</h1>
+const SimpleHeader = ({ children, classes }) => (
+	<div className={classes.container}>
+		<h1
+			className={classes.title}
+		>
+			Readable
+		</h1>
 		{children}
 	</div>
 );
 
-export { SimpleHeader };
+export default injectSheet(styles)(SimpleHeader);

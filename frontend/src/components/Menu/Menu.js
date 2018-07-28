@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { List, ListItem, Collapse } from '@material-ui/core';
+import injectSheet from 'react-jss';
 import { EditItem, DeleteItem } from './MenuItems';
 import EditPost from '../Posts/EditPost';
 import EditComment from './../Comments/EditComment';
@@ -24,11 +25,11 @@ class Menu extends Component {
 	handleClose = () => this.setState({ open: false })
 
 	render() {
-		const { open, remove, postToEdit, commentToEdit } = this.props;
+		const { open, remove, postToEdit, commentToEdit, classes } = this.props;
 		return (
 			<Collapse in={open} timeout="auto" unmountOnExit>
 				<List component="div">
-					<ListItem style={styles.container}>
+					<ListItem className={classes.container}>
 						<EditItem onClick={this.handleOpen} />
 						<DeleteItem onClick={remove} />
 					</ListItem>
@@ -49,4 +50,4 @@ class Menu extends Component {
 		);
 	}
 }
-export { Menu };
+export default injectSheet(styles)(Menu);

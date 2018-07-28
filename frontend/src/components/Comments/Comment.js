@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListItem, ListItemText } from '@material-ui/core';
-import { DateInfo } from '../common/Date';
+import DateInfo from '../common/Date';
 
 const styles = {
 	container: {

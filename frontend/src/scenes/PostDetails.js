@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Paper } from '@material-ui/core';
+import injectSheet from 'react-jss';
 import Vote from '../components/Vote/Vote';
-import { Menu } from '../components/Menu/Menu';
+import Menu from '../components/Menu/Menu';
 import {
 	deletePost,
 	getPost,
@@ -17,6 +18,7 @@ import { PostDetailsInfo, BackAndShare } from '../components/Posts/PostDetailsIt
 import CommentsList from './../components/Comments/CommentsList';
 import AddComment from '../components/Comments/AddComment';
 import NotFound from './NotFound';
+
 
 const styles = {
 	mainContainer: {
@@ -54,7 +56,13 @@ class PostDetails extends Component {
 	}
 
 	render() {
-		const { post, commentsCount, postNotFound } = this.props;
+		const {
+			post,
+			commentsCount,
+			postNotFound,
+			classes
+		} = this.props;
+
 		if (postNotFound) {
 			return (
 				<NotFound />
@@ -63,8 +71,11 @@ class PostDetails extends Component {
 		return (
 			<div>
 				<Header />
-				<Paper elevation={1} style={styles.mainContainer}>
-					<BackAndShare 
+				<Paper
+					elevation={1}
+					className={classes.mainContainer}
+				>
+					<BackAndShare
 						url={window.location.href}
 						backTo={'/'}
 					/>
@@ -73,7 +84,7 @@ class PostDetails extends Component {
 						voteScore={post.voteScore}
 					/>
 
-					<div style={styles.secondContainer}>
+					<div className={classes.secondContainer}>
 						<PostDetailsInfo
 							title={post.title}
 							author={post.author}
@@ -105,11 +116,11 @@ const mapStateToProps = ({ PostsReducer, CommentsReducer }, ownProps) => {
 	};
 };
 
-export default connect(mapStateToProps, {
+export default injectSheet(styles)(connect(mapStateToProps, {
 	deletePost,
 	getPost,
 	fetchComments,
 	createNewComment,
 	resetInitialState,
 	getCategories
-})(PostDetails);
+})(PostDetails));

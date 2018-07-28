@@ -1,8 +1,9 @@
 import React from 'react';
 import { ListItem } from '@material-ui/core';
 import Link from 'react-router-dom/Link';
+import injectSheet from 'react-jss';
 import { PostImage, MenuListButton, PostInfo } from './PostItems';
-import { DateInfo } from '../common/Date';
+import DateInfo from '../common/Date';
 import { isMobile } from 'react-device-detect';
 
 const styles = {
@@ -15,9 +16,9 @@ const styles = {
 	}
 };
 
-const PostPreview = ({ post, onMenuClick }) => (
+const PostPreview = ({ post, onMenuClick, classes }) => (
 	<ListItem button divider >
-		<Link style={styles.link}
+		<Link className={classes.link}
 			to={`/${post.category}/${post.id}`}>
 			{!isMobile && <PostImage />}
 			<PostInfo
@@ -31,4 +32,4 @@ const PostPreview = ({ post, onMenuClick }) => (
 	</ListItem>
 );
 
-export { PostPreview };
+export default injectSheet(styles)(PostPreview);

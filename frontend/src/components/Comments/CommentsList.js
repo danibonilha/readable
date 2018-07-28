@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { List } from '@material-ui/core';
+import injectSheet from 'react-jss';
 import Vote from '../Vote/Vote';
-import { Menu } from '../Menu/Menu';
+import Menu from '../Menu/Menu';
 import { fetchComments, deleteComment } from '../../store/actions';
 import { Comment } from './Comment';
 import { sortBy } from '../../utils';
@@ -36,14 +37,15 @@ class CommentsList extends Component {
 		this.props.deleteComment(id);
 	}
 	render() {
+		const { classes } = this.props;
 		return (
-			<div style={styles.list}>
+			<div className={classes.list}>
 				<List>
 					{this.props.comments.length > 0 &&
 						this.props.comments.map(comment => (
-							<div key={comment.id} style={styles.container}>
-								<Vote 
-									itemId={comment.id} 
+							<div key={comment.id} className={classes.container}>
+								<Vote
+									itemId={comment.id}
 									comment={true}
 									voteScore={comment.voteScore} />
 								<Comment comment={comment} />
@@ -67,4 +69,7 @@ const mapStateToProps = ({ CommentsReducer }) => {
 	};
 };
 
-export default connect(mapStateToProps, { fetchComments, deleteComment })(CommentsList);
+export default injectSheet(styles)(connect(mapStateToProps, {
+	fetchComments,
+	deleteComment
+})(CommentsList));

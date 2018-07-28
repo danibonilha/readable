@@ -1,6 +1,6 @@
 import React from 'react';
 import AddPost from '../Posts/AddPost';
-import { SimpleHeader } from './SimpleHeader';
+import SimpleHeader from './SimpleHeader';
 
 const Header = () => (
 	<SimpleHeader>

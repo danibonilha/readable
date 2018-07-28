@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { MenuItem, TextField } from '@material-ui/core/';
 import { connect } from 'react-redux';
+import injectSheet from 'react-jss';
 import { setSortBy } from '../../store/actions';
 
 const styles = {
@@ -18,7 +19,7 @@ class OrderBy extends Component {
 	
 	render() {
 		return (
-			<div style={styles.container}>
+			<div className={this.props.classes.container}>
 				<TextField
 					style={{ textAlign: 'center' }}
 					id="select-order"
@@ -43,4 +44,4 @@ const mapStateToProps = ({ PostsReducer }) => {
 	};
 };
 
-export default connect(mapStateToProps, { setSortBy })(OrderBy);
+export default injectSheet(styles)(connect(mapStateToProps, { setSortBy })(OrderBy));

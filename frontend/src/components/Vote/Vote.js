@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import injectSheet from 'react-jss';
 import { updatePostVote, updateCommentVote } from '../../store/actions';
 import { VoteDown, VoteUp, VoteScore } from './VoteItems';
 
@@ -37,7 +38,7 @@ class Vote extends Component {
 	}
 	render() {
 		return (
-			<div style={styles.container}>
+			<div className={this.props.classes.container}>
 				<VoteUp onClick={this.handleUpVote} />
 				<VoteScore voteScore={this.props.voteScore} />
 				<VoteDown onClick={this.handleDownVote} />
@@ -46,4 +47,4 @@ class Vote extends Component {
 	}
 }
 
-export default connect(null, { updatePostVote, updateCommentVote })(Vote);
+export default injectSheet(styles)(connect(null, { updatePostVote, updateCommentVote })(Vote));

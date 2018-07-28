@@ -1,6 +1,7 @@
 import React from 'react';
 import { ListItemText } from '@material-ui/core';
 import * as moment from 'moment';
+import injectSheet from 'react-jss';
 
 const styles = {
 	date: {
@@ -12,11 +13,11 @@ const styles = {
 	}
 };
 
-const DateInfo = ({ date }) => (
+const DateInfo = ({ date, classes }) => (
 	<ListItemText
-		style={styles.date}
+		className={classes.date}
 		secondary={moment(date).fromNow()}
 	/>
 );
 
-export { DateInfo };
+export default injectSheet(styles)(DateInfo);
