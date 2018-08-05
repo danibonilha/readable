@@ -15,7 +15,7 @@ const headers = {
 };
 
 const client = axios.create({
-	baseURL: constants.API,
+	baseURL: `${constants.API}/api`,
 	headers
 });
 
