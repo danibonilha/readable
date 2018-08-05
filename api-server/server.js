@@ -10,7 +10,7 @@ const comments = require('./comments')
 
 const app = express()
 
-app.use(express.static('public'))
+app.use(express.static('../frontend/build'))
 app.use(cors())
 
 
@@ -114,17 +114,16 @@ app.get('/api', (req, res) => {
   res.send(help)
 })
 
-app.use((req, res, next) => {
-  const token = req.get('Authorization')
-
-  if (token) {
-    req.token = token
-    next()
-  } else {
-    res.status(403).send({
-      error: 'Please provide an Authorization header to identify yourself (can be whatever you want)'
-    })
-  }
+app.use('/api/*', (req, res, next) => {
+    const token = req.get('Authorization')
+    if (token) {
+        req.token = token
+        next()
+    } else {
+        res.status(403).send({
+            error: 'Please provide an Authorization header to identify yourself (can be whatever you want)'
+        })
+    }
 })
 
 
@@ -315,9 +314,8 @@ app.delete('/api/comments/:id', (req, res) => {
 })
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../frontend/build')));
     app.get('*', function(req, res) {
-      res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+      res.sendFile(path.join(__dirname, '../frontend/','build' ,'index.html'));
     });
   }
 
