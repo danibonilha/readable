@@ -1,0 +1,22 @@
+{
+  "name": "readable",
+  "version": "1.0.0",
+  "description": "React and Redux app",
+  "main": "index.js",
+  "keywords": [
+    "udacity",
+    "redux",
+    "readable",
+    "react"
+  ],
+  "author": "Daniele Bonilha",
+  "license": "MIT",
+  "engines": {
+    "node": "8.11.3",
+    "npm": "5.6.0"
+  },
+  "scripts": {
+    "start": "cd api-server && npm install && node server.js",
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
+  }
+}
