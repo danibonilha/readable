@@ -29,9 +29,6 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    // "eslint": "^5.0.0",
-    // "eslint-plugin-babel": "^5.1.0",
-    // "eslint-plugin-react": "^7.9.1",
     "redux-devtools": "^3.4.1"
   }
 }
