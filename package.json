@@ -17,6 +17,6 @@
   },
   "scripts": {
     "start": "cd api-server && npm install && node server.js",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "heroku-postbuild": "cd frontend && npm install --production && npm run build"
   }
 }
