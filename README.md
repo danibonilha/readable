@@ -38,4 +38,3 @@ Information about the API server and how to use it can be found in its [README f
 ### Roadmap
 
 * Deploy live demo in Heroku
-* Add jss to remove styling from style property and use className to improve performance.
